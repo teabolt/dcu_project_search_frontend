@@ -1,4 +1,4 @@
-import cypress from 'cypress';
+const cypress = require('cypress');
 
 const args = process.argv.slice(2);
 
