@@ -66,6 +66,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "lint": "bash scripts/lint.sh",
+    "stylelint": "bash scripts/stylelint.sh",
     "test": "node scripts/test.js",
     "test-e2e": "node scripts/test-e2e",
     "test-e2e:dev": "node scripts/test-e2e --dev"
@@ -142,6 +143,8 @@
   },
   "devDependencies": {
     "cypress": "^4.12.1",
-    "eslint-plugin-cypress": "^2.11.1"
+    "eslint-plugin-cypress": "^2.11.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0"
   }
 }
