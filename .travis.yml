@@ -1,16 +1,17 @@
 language: node_js
 
 node_js:
-    - 14
+  - 14
 
 branches:
-    only:
-        - master
+  only:
+    - master
 
 install:
-    - npm install
+  - npm install
 
 script:
-    - npm run lint
-    - npm run stylelint
-    - npm run test
+  - npm run prettify-check
+  - npm run lint
+  - npm run stylelint
+  - npm run test

@@ -14,21 +14,21 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
 Cypress.on('window:before:load', (win) => {
-    cy.spy(win.console, 'error').as('winConsoleError');
+  cy.spy(win.console, 'error').as('winConsoleError');
 });
 
 before(() => {
-    cy.visit('http://localhost:3000');
+  cy.visit('http://localhost:3000');
 });
 
 afterEach(() => {
-    cy.get('@winConsoleError').then(($winError) => {
-        expect($winError).not.to.be.called;
-    })
+  cy.get('@winConsoleError').then(($winError) => {
+    expect($winError).not.to.be.called;
+  });
 });
