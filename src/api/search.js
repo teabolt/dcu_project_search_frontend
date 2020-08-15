@@ -14,6 +14,6 @@ export async function searchProjects(query) {
   } catch (err) {
     // error handling middleware
     console.error(err);
-    return [];
+    return {};
   }
 }
