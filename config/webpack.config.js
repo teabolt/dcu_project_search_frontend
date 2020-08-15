@@ -300,6 +300,10 @@ module.exports = function (webpackEnv) {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
+        'prosearch-api': path.resolve(paths.appSrc, 'api/'),
+        'prosearch-components': path.resolve(paths.appSrc, 'components/'),
+        'prosearch-constants': path.resolve(paths.appSrc, 'constants/'),
+        modules: path.resolve(paths.appSrc, 'modules/'),
         ...(modules.webpackAliases || {}),
       },
       plugins: [

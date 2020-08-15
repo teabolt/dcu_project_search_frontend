@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    node: true,
   },
   extends: 'eslint:recommended',
   globals: {
@@ -51,7 +52,7 @@ module.exports = {
     'array-bracket-newline': 'error',
     'array-bracket-spacing': 'error',
     'array-callback-return': 'error',
-    'array-element-newline': 'error',
+    'array-element-newline': 'off',
     'arrow-body-style': 'error',
     'arrow-parens': 'off',
     'arrow-spacing': [
@@ -96,7 +97,7 @@ module.exports = {
     'func-call-spacing': 'error',
     'func-name-matching': 'error',
     'func-names': 'off',
-    'func-style': ['error', 'declaration'],
+    'func-style': ['off'],
     'function-call-argument-newline': ['error', 'consistent'],
     'function-paren-newline': 'off',
     'generator-star-spacing': 'error',
@@ -233,7 +234,7 @@ module.exports = {
     'no-useless-return': 'error',
     'no-var': 'off',
     'no-void': 'error',
-    'no-warning-comments': 'error',
+    'no-warning-comments': 'warn',
     'no-whitespace-before-property': 'error',
     'nonblock-statement-body-position': 'error',
     'object-curly-newline': 'error',
