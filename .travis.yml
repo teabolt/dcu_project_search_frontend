@@ -3,15 +3,35 @@ language: node_js
 node_js:
   - 14
 
+addons:
+  apt:
+    packages:
+      # Cypress
+      - libgconf-2-4
+
 branches:
   only:
     - master
 
+cache:
+  npm: true
+  directories:
+    # Cypress
+    - ~/.cache
+  override:
+    - npm ci
+    - npm run cy:verify
+    - npm run cy:info
+
 install:
-  - npm install
+  - npm ci
 
 script:
   - npm run prettify-check
   - npm run lint
   - npm run stylelint
   - npm run test
+  - npm run start &
+  - npm run test-e2e
+  # Kill background tasks
+  - kill $(jobs -p) || true
