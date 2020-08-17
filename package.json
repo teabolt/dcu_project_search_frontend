@@ -72,6 +72,7 @@
     "build": "node scripts/build.js",
     "lint": "bash scripts/lint.sh",
     "stylelint": "bash scripts/stylelint.sh",
+    "stylelint-fix": "bash scripts/stylelint-fix.sh",
     "test": "node scripts/test.js",
     "test-e2e": "node scripts/test-e2e",
     "test-e2e:dev": "node scripts/test-e2e --dev",
@@ -124,7 +125,12 @@
     "modulePaths": [],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "^prosearch-api(.*)$": "<rootDir>/src/api/$1",
+      "^prosearch-components(.*)$": "<rootDir>/src/components/$1",
+      "^prosearch-constants(.*)$": "<rootDir>/src/constants/$1",
+      "^prosearch-views(.*)$": "<rootDir>/src/views/$1",
+      "^modules(.*)$": "<rootDir>/src/modules/$1"
     },
     "moduleFileExtensions": [
       "web.js",
@@ -153,6 +159,7 @@
     "eslint-plugin-cypress": "^2.11.1",
     "prettier": "^2.0.5",
     "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0"
   }
 }
