@@ -6,6 +6,7 @@ import { searchProjects } from 'prosearch-api/search';
 import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import SearchBox from 'prosearch-components/SearchBox';
 import SearchResultSummary from 'prosearch-components/SearchResultSummary';
+import ScrollToTop from 'prosearch-components/ScrollToTop';
 import { SEARCH_DEFAULT_PAGINATION_SIZE } from 'prosearch-constants';
 import SearchResults from 'prosearch-views/SearchResults';
 
@@ -86,6 +87,7 @@ const App = () => {
         open={Boolean(error)}
         onClose={onSnackbarClose}
       />
+      <ScrollToTop />
     </div>
   );
 };

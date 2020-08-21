@@ -239,7 +239,7 @@ module.exports = {
     'nonblock-statement-body-position': 'error',
     'object-curly-newline': 'error',
     'object-curly-spacing': ['error', 'always'],
-    'object-property-newline': 'error',
+    'object-property-newline': 'off',
     'object-shorthand': 'error',
     'one-var': 'off',
     'one-var-declaration-per-line': 'error',
