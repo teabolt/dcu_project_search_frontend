@@ -1,7 +1,12 @@
 import _ from 'lodash';
-import React, { useState } from 'react';
+import Snackbar from '@material-ui/core/Snackbar';
+import React, { useEffect, useState } from 'react';
 
-import Search from 'prosearch-components/Search';
+import { searchProjects } from 'prosearch-api/search';
+import LoadingSpinner from 'prosearch-components/LoadingSpinner';
+import SearchBox from 'prosearch-components/SearchBox';
+import SearchResultSummary from 'prosearch-components/SearchResultSummary';
+import { SEARCH_DEFAULT_PAGINATION_SIZE } from 'prosearch-constants';
 import SearchResults from 'prosearch-views/SearchResults';
 
 import './App.scss';
@@ -13,15 +18,74 @@ const DEBOUNCE_WAIT_MS = 200;
 
 const App = () => {
   const [query, setQuery] = useState('');
+  const [searchResults, setSearchResults] = useState(null);
+  const [error, setError] = useState(null);
 
-  const onChange = _.debounce((newQuery) => {
+  const loadResults = async (page) => {
+    try {
+      const fromOffset = page * SEARCH_DEFAULT_PAGINATION_SIZE;
+      const res = await searchProjects(query, fromOffset);
+      return res;
+    } catch (err) {
+      setError(String(err));
+    }
+  };
+
+  useEffect(() => {
+    if (query) {
+      (async () => {
+        const results = await loadResults(0);
+        setSearchResults(results);
+      })();
+    }
+  }, [query]);
+
+  const onChangeSearch = _.debounce((newQuery) => {
     setQuery(newQuery);
   }, DEBOUNCE_WAIT_MS);
 
+  const onSnackbarClose = (_event, reason) => {
+    if (reason === 'timeout') {
+      setError(null);
+    }
+  };
+
   return (
     <div className='search-app'>
-      <Search placeholder={PLACEHOLDER_MSG} value={query} onChange={onChange} />
-      {query && <SearchResults query={query} />}
+      <SearchBox
+        placeholder={PLACEHOLDER_MSG}
+        value={query}
+        onChange={onChangeSearch}
+      />
+      {query && (
+        <>
+          {searchResults ? (
+            <>
+              <SearchResultSummary
+                query={query}
+                searchResults={searchResults}
+              />
+              <SearchResults
+                searchResults={searchResults}
+                onLoadResults={loadResults}
+                onSetSearchResults={setSearchResults}
+              />
+            </>
+          ) : (
+            <LoadingSpinner />
+          )}
+        </>
+      )}
+      <Snackbar
+        anchorOrigin={{
+          horizontal: 'right',
+          vertical: 'bottom',
+        }}
+        autoHideDuration={6000}
+        message={error}
+        open={Boolean(error)}
+        onClose={onSnackbarClose}
+      />
     </div>
   );
 };

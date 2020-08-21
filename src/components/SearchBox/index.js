@@ -3,7 +3,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Search = (props) => {
+const SearchBox = (props) => {
   const [currentValue, setCurrentValue] = useState(props.value);
 
   const onChangeValue = (event) => {
@@ -26,11 +26,11 @@ const Search = (props) => {
   );
 };
 
-Search.propTypes = {
+SearchBox.propTypes = {
   onChange: PropTypes.func.isRequired,
 
   placeholder: PropTypes.string,
   value: PropTypes.string,
 };
 
-export default Search;
+export default SearchBox;

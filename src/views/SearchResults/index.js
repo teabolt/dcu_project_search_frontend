@@ -1,77 +1,55 @@
-import CircularProgress from '@material-ui/core/CircularProgress';
 import _ from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 
-import { searchProjects } from 'prosearch-api/search';
+import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import Project from 'prosearch-components/Project';
-import SearchResultSummary from 'prosearch-components/SearchResultSummary';
-import { SEARCH_DEFAULT_PAGINATION_SIZE } from 'prosearch-constants';
 
 import './SearchResults.scss';
 
 const SearchResults = (props) => {
-  const [results, setResults] = useState(null);
-
-  const loadResults = async (page) => {
-    try {
-      const fromOffset = page * SEARCH_DEFAULT_PAGINATION_SIZE;
-      const searchResults = await searchProjects(props.query, fromOffset);
-      if (fromOffset === 0) {
-        setResults(searchResults);
-      } else {
-        setResults({
-          results: _.concat(results.results, searchResults.results),
-          total: results.total,
-        });
-      }
-    } catch (err) {
-      // TODO: error handling
-    }
+  const hasMore = () => {
+    return _.size(props.searchResults.results) < props.searchResults.total;
   };
 
-  useEffect(() => {
-    loadResults(0);
-  }, [props.query]);
-
-  const hasMoreResults = () => {
-    if (!results) {
-      return true;
-    }
-    return _.size(results.results) < results.total;
+  const loadMore = async (page) => {
+    const results = await props.onLoadResults(page);
+    props.onSetSearchResults({
+      results: _.concat(props.searchResults.results, results.results),
+      total: results.total,
+    });
   };
 
   return (
     <div className='search-results-container'>
-      <>
-        {results && (
-          <SearchResultSummary query={props.query} results={results} />
+      <InfiniteScroll
+        className='search-results'
+        pageStart={0}
+        initialLoad={false} // We do an initial load by ourselves.
+        loadMore={loadMore}
+        hasMore={hasMore()}
+        loader={<LoadingSpinner key='search-results-loading' />}
+      >
+        {props.searchResults ? (
+          props.searchResults.results.map((result, index) => (
+            // FIXME: key error
+            <Project key={index} project={result} />
+          ))
+        ) : (
+          <span key='search-results-none'>No projects found</span>
         )}
-        <InfiniteScroll
-          className='search-results'
-          pageStart={0}
-          initialLoad={false} // We do an initial load ourselves above.
-          loadMore={loadResults}
-          hasMore={hasMoreResults()}
-          loader={<CircularProgress key='search-results-loading' />}
-        >
-          {results ? (
-            results.results.map((result, index) => (
-              // FIXME: key error
-              <Project key={index} project={result} />
-            ))
-          ) : (
-            <span key='search-results-none'>No projects found</span>
-          )}
-        </InfiniteScroll>
-      </>
+      </InfiniteScroll>
     </div>
   );
 };
 
 SearchResults.propTypes = {
-  query: PropTypes.string,
+  searchResults: PropTypes.object.isRequired, // FIXME
+
+  // eslint-disable-next-line sort-keys
+  onLoadResults: PropTypes.func.isRequired,
+  onSetSearchResults: PropTypes.func.isRequired,
 };
 
 export default SearchResults;
