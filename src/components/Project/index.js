@@ -17,7 +17,7 @@ const Project = (props) => {
 
   const expandControlIcon = expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />;
   return (
-    <div className='project-container'>
+    <div className='project-container' key={props.key}>
       <div>{props.project.title}</div>
       <div>{props.project.year}</div>
       <div>{props.project.description}</div>
@@ -39,7 +39,8 @@ const Project = (props) => {
 };
 
 Project.propTypes = {
-  project: PropTypes.object, // FIXME
+  key: PropTypes.string.isRequired,
+  project: PropTypes.object.isRequired, // FIXME
 };
 
 export default Project;

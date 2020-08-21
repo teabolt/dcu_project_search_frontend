@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { API_ENDPOINT, SEARCH_ENDPOINT } from 'prosearch-constants/api';
+import { API_ENDPOINT, SEARCH_ENDPOINT } from 'prosearch-constants';
 
 const BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 const BACKEND_URL = `${BACKEND_HOST}/${API_ENDPOINT}`;

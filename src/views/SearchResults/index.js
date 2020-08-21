@@ -1,87 +1,71 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import _ from 'lodash';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 
 import { searchProjects } from 'prosearch-api/search';
 import Project from 'prosearch-components/Project';
 import SearchResultSummary from 'prosearch-components/SearchResultSummary';
+import { SEARCH_DEFAULT_PAGINATION_SIZE } from 'prosearch-constants';
 
 import './SearchResults.scss';
 
 const SearchResults = (props) => {
-  const handleObserver = (entities) => {
-    if (results && results.results.length === results.total) {
-      observer.disconnect();
-    }
-    if (_.some(entities, (entity) => entity.isIntersecting)) {
-      loadResults();
-    }
-  };
-
-  const scrollRef = useRef(null);
-
   const [results, setResults] = useState(null);
-  const [fromOffset, setFromOffset] = useState(undefined);
-  const [loading, setLoading] = useState(false);
-  const [observer, setObserver] = useState(
-    new IntersectionObserver(handleObserver, {
-      root: null,
-      rootMargin: '0%',
-      threshold: 1,
-    })
-  );
 
-  const loadResults = async () => {
-    setLoading(true);
+  const loadResults = async (page) => {
     try {
+      const fromOffset = page * SEARCH_DEFAULT_PAGINATION_SIZE;
       const searchResults = await searchProjects(props.query, fromOffset);
-      if (results) {
+      if (fromOffset === 0) {
+        setResults(searchResults);
+      } else {
         setResults({
           results: _.concat(results.results, searchResults.results),
           total: results.total,
         });
-      } else {
-        setResults(searchResults);
       }
-      setFromOffset(searchResults.results.length);
     } catch (err) {
       // TODO: error handling
     }
-    setLoading(false);
   };
 
   useEffect(() => {
-    // Initial load
-    if (!scrollRef.current) {
-      loadResults();
-    }
+    loadResults(0);
+  }, [props.query]);
 
-    if (scrollRef.current) {
-      observer.observe(scrollRef.current);
+  const hasMoreResults = () => {
+    if (!results) {
+      return true;
     }
-  }, [props.query, scrollRef.current]);
+    return _.size(results.results) < results.total;
+  };
 
   return (
     <div className='search-results-container'>
-      {results && (
-        <>
+      <>
+        {results && (
           <SearchResultSummary query={props.query} results={results} />
-          <div className='search-results'>
-            {!results.results ? (
-              <span>No projects found</span>
-            ) : (
-              <>
-                {results.results.map((result) => (
-                  <Project project={result} />
-                ))}
-                <div ref={scrollRef}></div>
-              </>
-            )}
-          </div>
-        </>
-      )}
-      {loading && <CircularProgress />}
+        )}
+        <InfiniteScroll
+          className='search-results'
+          pageStart={0}
+          initialLoad={false} // We do an initial load ourselves above.
+          loadMore={loadResults}
+          hasMore={hasMoreResults()}
+          loader={<CircularProgress key='search-results-loading' />}
+        >
+          {results ? (
+            results.results.map((result, index) => (
+              // FIXME: key error
+              <Project key={index} project={result} />
+            ))
+          ) : (
+            <span key='search-results-none'>No projects found</span>
+          )}
+        </InfiniteScroll>
+      </>
     </div>
   );
 };
