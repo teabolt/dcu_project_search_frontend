@@ -15,7 +15,7 @@ const Search = (props) => {
   };
 
   return (
-    <div>
+    <div className='search-box-container'>
       <SearchIcon />
       <Input
         placeholder={props.placeholder}

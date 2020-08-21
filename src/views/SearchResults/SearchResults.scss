@@ -1,0 +1,19 @@
+.search-results-container {
+  .search-result-summary-container {
+    margin-bottom: 2em;
+  }
+
+  .search-results {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    .project-container {
+      width: 70%;
+    }
+
+    .project-container:not(:last-child) {
+      margin-bottom: 3em;
+    }
+  }
+}
