@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import FallbackPlaceholder from 'prosearch-components/FallbackPlaceholder';
+import LabelValuePairs from 'prosearch-components/LabelValuePairs';
 import StudentsList from 'prosearch-components/StudentsList';
 
 import './Project.scss';
@@ -15,25 +17,71 @@ const Project = (props) => {
     setExpanded(!expanded);
   };
 
-  const expandControlIcon = expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />;
+  const ExpandControlIcon = expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />;
+
+  const items = [
+    {
+      label: 'Description',
+      pairClassName: 'project-description before-expanded',
+      value: <FallbackPlaceholder node={props.project.description} />,
+    },
+    ...(expanded
+      ? [
+          {
+            label: 'Programme',
+            pairClassName: 'project-programme',
+            value: <FallbackPlaceholder node={props.project.programme} />,
+          },
+          {
+            label: 'Supervisor',
+            pairClassName: 'project-supervisor',
+            value: <FallbackPlaceholder node={props.project.supervisor} />,
+          },
+          {
+            label: 'Students',
+            pairClassName: 'project-students',
+            value: (
+              <FallbackPlaceholder
+                node={<StudentsList students={props.project.students} />}
+              />
+            ),
+          },
+          {
+            label: 'Area',
+            pairClassName: 'project-area',
+            value: <FallbackPlaceholder node={props.project.area} />,
+          },
+          {
+            label: 'Technology',
+            pairClassName: 'project-technology',
+            value: <FallbackPlaceholder node={props.project.technology} />,
+          },
+          ...(props.project.video
+            ? [
+                {
+                  label: 'Video',
+                  pairClassName: 'project-video',
+                  value: <FallbackPlaceholder node={props.project.video} />,
+                },
+              ]
+            : []),
+        ]
+      : []),
+  ];
+
   return (
     <div className='project-container' key={props.key}>
-      <div>{props.project.title}</div>
-      <div>{props.project.year}</div>
-      <div>{props.project.description}</div>
-      {expanded && (
-        <>
-          <div>{props.project.area}</div>
-          <div>{props.project.programme}</div>
-          <div>
-            <StudentsList students={props.project.students} />
-          </div>
-          <div>{props.project.supervisor}</div>
-          <div>{props.project.technology}</div>
-          <div>{props.project.video}</div>
-        </>
-      )}
-      <Button startIcon={expandControlIcon} onClick={onExpandControlClick} />
+      <div className='project-header'>
+        <div className='project-title'>{props.project.title}</div>
+        <div className='project-year'>{props.project.year}</div>
+      </div>
+      <LabelValuePairs className='project-properties' pairs={items} />
+      <IconButton
+        className='project-expand-control'
+        onClick={onExpandControlClick}
+      >
+        {ExpandControlIcon}
+      </IconButton>
     </div>
   );
 };

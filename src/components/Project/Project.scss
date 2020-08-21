@@ -2,4 +2,25 @@
   display: flex;
   flex-flow: column nowrap;
   text-align: start;
+
+  .project-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-bottom: 2em;
+  }
+
+  .project-expand-control {
+    align-self: flex-end;
+  }
+
+  .label-value-pair {
+    .label-value-pair-label {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .label-value-pair:not(:last-child) {
+    margin-bottom: 1em;
+  }
 }

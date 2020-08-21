@@ -1,19 +1,16 @@
 .search-results-container {
-  .search-result-summary-container {
-    margin-bottom: 2em;
-  }
-
   .search-results {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     .project-container {
-      width: 70%;
+      // TODO: probably want more width for mobile
+      width: 50%;
     }
 
     .project-container:not(:last-child) {
-      margin-bottom: 3em;
+      margin-bottom: 5em;
     }
   }
 }
