@@ -1,5 +1,4 @@
 import Input from '@material-ui/core/Input';
-import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,7 +15,6 @@ const SearchBox = (props) => {
 
   return (
     <div className='search-box-container'>
-      <SearchIcon />
       <Input
         placeholder={props.placeholder}
         value={currentValue}
