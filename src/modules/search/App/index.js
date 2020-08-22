@@ -29,6 +29,7 @@ const App = () => {
       return res;
     } catch (err) {
       setError(String(err));
+      return null;
     }
   };
 

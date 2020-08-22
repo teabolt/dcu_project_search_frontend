@@ -1,26 +1,52 @@
+// TODO: Move to a colours stylesheets
+$baseGray2: #edebeb;
+$baseGray: #969696;
+$baseBlack: #73777d;
+$blacker: #303030;
+$black: #000;
+
+$mainPurple: #c285ed;
+
 .project-container {
+  border: 1px solid $baseGray2;
+  border-radius: 1em;
+  box-shadow: 2px 3px 2px $baseGray;
   display: flex;
   flex-flow: column nowrap;
   text-align: start;
+  padding: 2em 2em 1em 2em;
 
   .project-header {
-    display: flex;
+    display: flex; // TODO: create a mixin for flex
     flex-flow: row wrap;
     justify-content: space-between;
     margin-bottom: 2em;
-  }
+    font-size: 1.2em; // TODO: move to a fonts stylesheet
 
-  .project-expand-control {
-    align-self: flex-end;
+    .project-title {
+      color: $blacker;
+      font-weight: bold;
+    }
+
+    .project-year {
+      color: $baseGray;
+    }
   }
 
   .label-value-pair {
     .label-value-pair-label {
+      color: $baseBlack;
+      font-weight: bold; // TODO: move to a fonts stylesheet
       margin-bottom: 0.5em;
     }
   }
 
   .label-value-pair:not(:last-child) {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
+  }
+
+  .project-expand-control {
+    align-self: flex-end;
+    color: $mainPurple;
   }
 }

@@ -78,6 +78,7 @@ const Project = (props) => {
       <LabelValuePairs className='project-properties' pairs={items} />
       <IconButton
         className='project-expand-control'
+        color='inherit'
         onClick={onExpandControlClick}
       >
         {ExpandControlIcon}
