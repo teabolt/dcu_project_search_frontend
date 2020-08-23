@@ -53,7 +53,7 @@ const App = () => {
   };
 
   return (
-    <div className='search-app'>
+    <div className='app-content search-app'>
       <SearchBox
         placeholder={PLACEHOLDER_MSG}
         value={query}

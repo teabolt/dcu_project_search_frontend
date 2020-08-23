@@ -1,0 +1,39 @@
+@import '~prosearch-stylesheets/Mixins';
+
+@mixin right-nav {
+  margin-right: auto;
+}
+
+.main-navbar {
+  .main-navbar-nav-items {
+    @include flex-row;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    .main-navbar-nav-item {
+      // FIXME: colour import
+      color: white;
+    }
+
+    .main-navbar-nav-item:not(:last-child) {
+      margin-right: 1em;
+
+      &.home-link {
+        @include right-nav();
+      }
+    }
+  }
+}
+
+.home-link img {
+  height: 4em;
+}
+
+.about-link {
+  font-size: 1.2em;
+}
+
+.github-link img {
+  height: 3em;
+}

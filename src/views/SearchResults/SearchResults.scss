@@ -4,10 +4,6 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    .project-container {
-      // TODO: probably want more width for mobile
-      width: 50%;
-    }
 
     .project-container:not(:last-child) {
       margin-bottom: 5em;
