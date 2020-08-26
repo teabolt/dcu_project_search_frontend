@@ -1,11 +1,4 @@
-// TODO: Move to a colours stylesheets
-$baseGray2: #edebeb;
-$baseGray: #969696;
-$baseBlack: #73777d;
-$blacker: #303030;
-$black: #000;
-
-$mainPurple: #c285ed;
+@import '~prosearch-stylesheets/Colors';
 
 .project-container {
   border: 1px solid $baseGray2;
