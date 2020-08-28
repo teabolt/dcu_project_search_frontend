@@ -1,46 +1,68 @@
 @import '~prosearch-stylesheets/Colors';
+@import '~prosearch-stylesheets/Fonts';
 @import '~prosearch-stylesheets/Flex';
 
 .project-container {
   @include flex(column, nowrap);
 
-  border: 1px solid $baseGray2;
-  border-radius: 1em;
-  box-shadow: 2px 3px 2px $baseGray;
   text-align: start;
   padding: 2em 2em 1em 2em;
 
-  .project-header {
-    @include flex(row, wrap);
+  &.MuiAccordion-root {
+    border: 1px solid $baseGray2;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px $baseGray;
+  }
 
-    justify-content: space-between;
-    margin-bottom: 2em;
-    font-size: 1.2em; // TODO: move to a fonts stylesheet
+  .project-summary {
+    .project-header {
+      @include flex(row, wrap);
 
-    .project-title {
-      color: $blacker;
-      font-weight: bold;
+      justify-content: space-between;
+      margin-bottom: 2em;
+      font-size: 1.2em; // TODO: move to a fonts stylesheet
+
+      .project-title {
+        @include bold-font;
+      }
+
+      .project-year {
+        color: $gray1;
+      }
     }
 
-    .project-year {
-      color: $baseGray;
+    .MuiAccordionSummary-content {
+      @include flex(column, nowrap);
+    }
+  }
+
+  .project-expanded-container {
+    @include flex(column, nowrap);
+  }
+
+  .project-expand-control {
+    color: $purple1;
+    cursor: pointer;
+
+    &.project-expand-control-more {
+      align-self: flex-end;
+    }
+
+    &.project-expand-control-less {
+      align-self: flex-end;
     }
   }
 
   .label-value-pair {
     .label-value-pair-label {
-      color: $baseBlack;
-      font-weight: bold; // TODO: move to a fonts stylesheet
+      @include bold-font;
+
+      color: $gray1;
       margin-bottom: 0.5em;
     }
   }
 
   .label-value-pair:not(:last-child) {
     margin-bottom: 1.5em;
-  }
-
-  .project-expand-control {
-    align-self: flex-end;
-    color: $mainPurple;
   }
 }

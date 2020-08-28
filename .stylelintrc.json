@@ -3,6 +3,7 @@
   "plugins": ["stylelint-scss"],
   "rules": {
     "at-rule-no-unknown": null,
+    "color-hex-length": null,
     "scss/at-rule-no-unknown": true
   }
 }
