@@ -1,17 +1,18 @@
 @import '~prosearch-stylesheets/Colors';
+@import '~prosearch-stylesheets/Flex';
 
 .project-container {
+  @include flex(column, nowrap);
+
   border: 1px solid $baseGray2;
   border-radius: 1em;
   box-shadow: 2px 3px 2px $baseGray;
-  display: flex;
-  flex-flow: column nowrap;
   text-align: start;
   padding: 2em 2em 1em 2em;
 
   .project-header {
-    display: flex; // TODO: create a mixin for flex
-    flex-flow: row wrap;
+    @include flex(row, wrap);
+
     justify-content: space-between;
     margin-bottom: 2em;
     font-size: 1.2em; // TODO: move to a fonts stylesheet

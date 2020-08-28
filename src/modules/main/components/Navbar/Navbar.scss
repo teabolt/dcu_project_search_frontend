@@ -1,4 +1,4 @@
-@import '~prosearch-stylesheets/Mixins';
+@import '~prosearch-stylesheets/Flex';
 
 @mixin right-nav {
   margin-right: auto;
@@ -6,7 +6,7 @@
 
 .main-navbar {
   .main-navbar-nav-items {
-    @include flex-row;
+    @include flex(row);
 
     justify-content: space-evenly;
     align-items: center;

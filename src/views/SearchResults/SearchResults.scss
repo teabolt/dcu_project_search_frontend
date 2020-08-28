@@ -1,7 +1,9 @@
+@import '~prosearch-stylesheets/Flex';
+
 .search-results-container {
   .search-results {
-    display: flex;
-    flex-flow: column nowrap;
+    @include flex(column, nowrap);
+
     justify-content: center;
     align-items: center;
 
