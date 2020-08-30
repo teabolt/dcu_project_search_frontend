@@ -10,6 +10,8 @@ import ScrollToTop from 'prosearch-components/ScrollToTop';
 import { SEARCH_DEFAULT_PAGINATION_SIZE } from 'prosearch-constants';
 import SearchResults from 'prosearch-views/SearchResults';
 
+import SearchHeader from 'modules/search/components/SearchHeader';
+
 import './App.scss';
 
 const PLACEHOLDER_MSG = 'Search for a project, i.e. cloud, supervisor jane';
@@ -53,6 +55,7 @@ const App = () => {
 
   return (
     <div className='app-content search-app'>
+      <SearchHeader />
       <SearchBox
         placeholder={PLACEHOLDER_MSG}
         value={query}
