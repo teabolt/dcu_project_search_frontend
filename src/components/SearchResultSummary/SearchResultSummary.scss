@@ -1,0 +1,11 @@
+@import '~prosearch-stylesheets/Colors';
+@import '~prosearch-stylesheets/Flex';
+
+.search-result-summary-container {
+  color: $gray2;
+  // Hide overflowing summary with an ellipsis and a closing quotation mark.
+  overflow: hidden;
+  text-overflow: '..."';
+  // Put the entire summary on a single line.
+  white-space: nowrap;
+}

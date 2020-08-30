@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './SearchResultSummary.scss';
+
 const SearchResultSummary = (props) => {
   return (
     <div className='search-result-summary-container'>
-      {props.searchResults.total} projects found for {props.query}
+      {props.searchResults.total} projects found for "{props.query}"
     </div>
   );
 };
