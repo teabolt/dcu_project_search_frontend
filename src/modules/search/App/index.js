@@ -12,8 +12,7 @@ import SearchResults from 'prosearch-views/SearchResults';
 
 import './App.scss';
 
-const PLACEHOLDER_MSG =
-  'Search for a project, i.e. cloud, supervisor jane, ...';
+const PLACEHOLDER_MSG = 'Search for a project, i.e. cloud, supervisor jane';
 
 const DEBOUNCE_WAIT_MS = 200;
 

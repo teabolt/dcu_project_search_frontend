@@ -2,6 +2,8 @@ import Input from '@material-ui/core/Input';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import './SearchBox.scss';
+
 const SearchBox = (props) => {
   const [currentValue, setCurrentValue] = useState(props.value);
 
@@ -16,6 +18,7 @@ const SearchBox = (props) => {
   return (
     <div className='search-box-container'>
       <Input
+        disableUnderline={true}
         placeholder={props.placeholder}
         value={currentValue}
         onChange={onChangeValue}
