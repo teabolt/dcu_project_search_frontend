@@ -15,10 +15,12 @@ const SearchResults = (props) => {
 
   const loadMore = async (page) => {
     const results = await props.onLoadResults(page);
-    props.onSetSearchResults({
-      results: _.concat(props.searchResults.results, results.results),
-      total: results.total,
-    });
+    if (results) {
+      props.onSetSearchResults({
+        results: _.concat(props.searchResults.results, results.results),
+        total: results.total,
+      });
+    }
   };
 
   return (
