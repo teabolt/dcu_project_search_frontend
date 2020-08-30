@@ -2,16 +2,19 @@
 @import '~prosearch-stylesheets/Fonts';
 @import '~prosearch-stylesheets/Flex';
 
-.project-container {
+.project-container.MuiAccordion-root.MuiAccordion-rounded {
   @include flex(column, nowrap);
 
+  background-color: $gray3;
+  border-radius: 20px;
+  box-shadow: 0 0.3em 1em $blue2;
+  color: $black;
   text-align: start;
   padding: 2em 2em 1em 2em;
 
-  &.MuiAccordion-root {
-    background-color: $gray3;
-    border-radius: 16px;
-    box-shadow: 1px 1px 1px $gray1;
+  // Need this to get rid of an unexpected line at the top of the accordion container
+  &::before {
+    content: none;
   }
 
   .project-summary {
@@ -24,6 +27,8 @@
 
       .project-title {
         @include bold-font;
+
+        width: 90%;
       }
 
       .project-year {

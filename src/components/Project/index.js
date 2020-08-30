@@ -45,7 +45,6 @@ const Project = (props) => {
       expanded={expanded}
       onChange={onClickExpand}
       key={props.key}
-      square={true}
     >
       <AccordionSummary className='project-summary'>
         <div

@@ -9,19 +9,19 @@ import './Navbar.scss';
 const Navbar = () => {
   return (
     <nav className='main-navbar'>
-      <ul className='main-navbar-nav-items'>
-        <li className='main-navbar-nav-item right-nav home-link'>
+      <div className='main-navbar-nav-items'>
+        <div className='main-navbar-nav-item right-nav home-link'>
           <Link to='/'>
             <img src={DcuLogo} alt='dcu logo' />
           </Link>
-        </li>
-        <li className='main-navbar-nav-item about-link'>
+        </div>
+        <div className='main-navbar-nav-item about-link'>
           <Link to='/about'>About</Link>
-        </li>
-        <li className='main-navbar-nav-item'>
+        </div>
+        <div className='main-navbar-nav-item'>
           <span className='main-navbar-separator'>•</span>
-        </li>
-        <li className='main-navbar-nav-item github-link'>
+        </div>
+        <div className='main-navbar-nav-item github-link'>
           <a
             href='https://github.com/teabolt/dcu_project_search_frontend'
             rel='noreferrer noopener'
@@ -29,8 +29,8 @@ const Navbar = () => {
           >
             <img src={GitHubLogo} alt='project github link' />
           </a>
-        </li>
-      </ul>
+        </div>
+      </div>
     </nav>
   );
 };

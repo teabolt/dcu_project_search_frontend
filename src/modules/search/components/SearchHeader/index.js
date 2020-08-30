@@ -1,8 +1,6 @@
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
-import './SearchHeader.scss';
-
 const SearchHeader = () => {
   return (
     <div className='search-header'>

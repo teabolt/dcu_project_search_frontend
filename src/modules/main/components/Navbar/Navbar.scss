@@ -1,4 +1,5 @@
 @import '~prosearch-stylesheets/Flex';
+@import '~prosearch-stylesheets/Colors';
 
 @mixin right-nav {
   margin-right: auto;
@@ -8,16 +9,11 @@
   .main-navbar-nav-items {
     @include flex(row);
 
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 
-    .main-navbar-nav-item {
-      // FIXME: colour import
-      color: white;
-    }
-
     .main-navbar-nav-item:not(:last-child) {
-      margin-right: 1em;
+      margin-right: 1.5em;
 
       &.home-link {
         @include right-nav();
@@ -35,5 +31,5 @@
 }
 
 .github-link img {
-  height: 3em;
+  height: 2em;
 }
