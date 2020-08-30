@@ -1,0 +1,19 @@
+@import '~prosearch-stylesheets/Colors';
+
+.background-overlay {
+  background: $purple1;
+  background: linear-gradient(
+    130deg,
+    $purple1 0%,
+    $purple2 10%,
+    $purple1 10.2%,
+    $purple1 85%,
+    $purple2 85.2%
+  );
+  height: 20em;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
