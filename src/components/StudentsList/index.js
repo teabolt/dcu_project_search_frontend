@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './StudentsList.scss';
+
 const StudentsList = (props) => {
   return (
     <div className='students-list-container'>
       {props.students.map((student) => {
         return (
-          <span>
+          <span className='students-list-student'>
             {student.name} ({student.email})
           </span>
         );
