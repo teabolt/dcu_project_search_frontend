@@ -16,6 +16,11 @@ import './Project.scss';
 const EVENT_TARGET_ICON = 'MuiSvgIcon-root';
 const EVENT_TARGET_BUTTON = 'MuiButtonBase-root';
 
+const commonIconProps = {
+  color: 'inherit',
+  fontSize: 'large',
+};
+
 const Project = (props) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -60,7 +65,7 @@ const Project = (props) => {
         </div>
         {!expanded && (
           <IconButton className='project-expand-control project-expand-control-more'>
-            <ExpandMoreIcon color='inherit' />
+            <ExpandMoreIcon {...commonIconProps} />
           </IconButton>
         )}
       </AccordionSummary>
@@ -109,7 +114,7 @@ const Project = (props) => {
           className='project-expand-control project-expand-control-less'
           onClick={collapseAccordion}
         >
-          <ExpandLessIcon color='inherit' />
+          <ExpandLessIcon {...commonIconProps} />
         </IconButton>
       </AccordionDetails>
     </Accordion>
