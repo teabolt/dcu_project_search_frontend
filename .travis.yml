@@ -31,7 +31,4 @@ script:
   - npm run lint
   - npm run stylelint
   - npm run test
-  - npm run start &
-  - npm run test-e2e
-  # Kill background tasks
-  - kill $(jobs -p) || true
+  - npx start-server-and-test start http://localhost:3000 test-e2e
