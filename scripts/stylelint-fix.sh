@@ -1,1 +1,0 @@
-npx stylelint **/*.css --fix

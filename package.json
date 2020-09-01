@@ -75,8 +75,8 @@
     "build": "node scripts/build.js",
     "lint": "bash scripts/lint.sh",
     "stylelint": "bash scripts/stylelint.sh",
-    "stylelint-fix": "bash scripts/stylelint-fix.sh",
-    "test": "node scripts/test.js",
+    "stylelint-fix": "bash scripts/stylelint.sh --fix",
+    "test": "node scripts/test.js --watchAll=false",
     "test-e2e": "node scripts/test-e2e",
     "test-e2e:dev": "node scripts/test-e2e --dev",
     "prettify": "bash scripts/prettify.sh",
@@ -132,8 +132,10 @@
       "^prosearch-api(.*)$": "<rootDir>/src/api/$1",
       "^prosearch-components(.*)$": "<rootDir>/src/components/$1",
       "^prosearch-constants(.*)$": "<rootDir>/src/constants/$1",
+      "^prosearch-stylesheets(.*)$": "<rootDir>/src/stylesheets/$1",
       "^prosearch-views(.*)$": "<rootDir>/src/views/$1",
-      "^modules(.*)$": "<rootDir>/src/modules/$1"
+      "^modules(.*)$": "<rootDir>/src/modules/$1",
+      "^prosearch-images(.*)$": "<rootDir>/images/$1"
     },
     "moduleFileExtensions": [
       "web.js",
