@@ -13,22 +13,21 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
 import './commands';
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
-
-Cypress.on('window:before:load', (win) => {
-  cy.spy(win.console, 'error').as('winConsoleError');
+beforeEach(() => {
+  cy.window().then((win) => {
+    cy.spy(win.console, 'error');
+  });
 });
 
 before(() => {
   cy.visit('http://localhost:3000');
 });
 
-afterEach(() => {
-  cy.get('@winConsoleError').then(($winError) => {
-    expect($winError).not.to.be.called;
+// TODO: Change to afterEach once we can filter out certain errors.
+after(() => {
+  cy.window().then((win) => {
+    expect(win.console.error).to.have.callCount(0);
   });
 });

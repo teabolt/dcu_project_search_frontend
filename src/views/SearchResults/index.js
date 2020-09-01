@@ -31,12 +31,15 @@ const SearchResults = (props) => {
         initialLoad={false} // We do an initial load by ourselves.
         loadMore={loadMore}
         hasMore={hasMore()}
-        loader={<LoadingSpinner key='search-results-loading' />}
+        loader={<LoadingSpinner key='loading-spinner' />}
       >
         {props.searchResults ? (
           props.searchResults.results.map((result, index) => (
-            // FIXME: key error
-            <Project key={index} project={result} testId={`project-${index}`} />
+            <Project
+              key={`project-${index}`}
+              project={result}
+              testId={`project-${index}`}
+            />
           ))
         ) : (
           <span key='search-results-none'>No projects found</span>

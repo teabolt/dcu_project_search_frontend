@@ -6,9 +6,12 @@ import './StudentsList.scss';
 const StudentsList = (props) => {
   return (
     <div className='students-list-container'>
-      {props.students.map((student) => {
+      {props.students.map((student, index) => {
         return (
-          <span className='students-list-student'>
+          <span
+            className='students-list-student'
+            key={`students-list-student-${index}`}
+          >
             {student.name} ({student.email})
           </span>
         );

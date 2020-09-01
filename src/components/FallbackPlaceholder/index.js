@@ -9,7 +9,7 @@ const FallbackPlaceholder = (props) => {
 };
 
 FallbackPlaceholder.propTypes = {
-  node: PropTypes.node.isRequired,
+  node: PropTypes.node,
 };
 
 export default FallbackPlaceholder;

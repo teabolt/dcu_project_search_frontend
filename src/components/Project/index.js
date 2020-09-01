@@ -46,7 +46,6 @@ const Project = (props) => {
       data-testid={props.testId}
       expanded={expanded}
       onChange={onClickExpand}
-      key={props.key}
     >
       <AccordionSummary className='project-summary'>
         <div
@@ -127,7 +126,6 @@ const Project = (props) => {
 };
 
 Project.propTypes = {
-  key: PropTypes.string.isRequired,
   project: PropTypes.object.isRequired, // FIXME
 
   testId: PropTypes.string,
