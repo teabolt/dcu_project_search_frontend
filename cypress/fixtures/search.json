@@ -1,0 +1,52 @@
+{
+  "total": 3,
+  "results": [
+    {
+      "area": "Test Area 1",
+      "description": "Test Description 1",
+      "students": [
+        {
+          "email": "testemail1@gmail.com",
+          "name": "test student 1"
+        }
+      ],
+      "supervisor": "Test Supervisor 1",
+      "technology": "Test Technology 1",
+      "title": "Test Title 1",
+      "year": "2020",
+      "video": "testlink"
+    },
+    {
+      "area": "Test Area 2",
+      "description": "Test Description 2",
+      "students": [
+        {
+          "email": "testemail2@gmail.com",
+          "name": "test student 2"
+        }
+      ],
+      "supervisor": "Test Supervisor 2",
+      "technology": "Test Technology 2",
+      "title": "Test Title 2",
+      "year": "2019"
+    },
+    {
+      "area": "Test Area 3",
+      "description": "Test Description 3",
+      "students": [
+        {
+          "email": "testemail3@gmail.com",
+          "name": "test student 3"
+        },
+        {
+          "email": "testemail4@gmail.com",
+          "name": "test student 4"
+        }
+      ],
+      "supervisor": "Test Supervisor 3",
+      "technology": "Test Technology 3",
+      "title": "Test Title 3",
+      "year": "2018"
+    }
+  ]
+}

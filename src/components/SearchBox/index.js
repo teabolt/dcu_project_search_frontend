@@ -18,6 +18,7 @@ const SearchBox = (props) => {
   return (
     <div className='search-box-container'>
       <Input
+        data-testid='search-box'
         disableUnderline={true}
         placeholder={props.placeholder}
         value={currentValue}

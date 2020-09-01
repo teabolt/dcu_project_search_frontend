@@ -2,8 +2,8 @@
  * Main app integration smoke test.
  */
 
-describe('Main', function () {
-  it('Should navigate to the homepage', function () {
-    cy.get('html');
+describe('Main app', function () {
+  it('should navigate to the homepage', function () {
+    cy.get('.search-app');
   });
 });

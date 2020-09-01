@@ -1,4 +1,5 @@
 import className from 'classnames';
+import _ from 'lodash';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Accordion from '@material-ui/core/Accordion';
@@ -42,6 +43,7 @@ const Project = (props) => {
   return (
     <Accordion
       className='project-container'
+      data-testid={props.testId}
       expanded={expanded}
       onChange={onClickExpand}
       key={props.key}
@@ -63,7 +65,10 @@ const Project = (props) => {
           </div>
         </div>
         {!expanded && (
-          <IconButton className='project-expand-control project-expand-control-more'>
+          <IconButton
+            className='project-expand-control project-expand-control-more'
+            data-testid='project-expand-button'
+          >
             <ExpandMoreIcon {...commonIconProps} />
           </IconButton>
         )}
@@ -111,6 +116,7 @@ const Project = (props) => {
         )}
         <IconButton
           className='project-expand-control project-expand-control-less'
+          data-testid='project-collapse-button'
           onClick={collapseAccordion}
         >
           <ExpandLessIcon {...commonIconProps} />
@@ -123,6 +129,8 @@ const Project = (props) => {
 Project.propTypes = {
   key: PropTypes.string.isRequired,
   project: PropTypes.object.isRequired, // FIXME
+
+  testId: PropTypes.string,
 };
 
 export default Project;

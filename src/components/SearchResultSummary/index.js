@@ -5,7 +5,10 @@ import './SearchResultSummary.scss';
 
 const SearchResultSummary = (props) => {
   return (
-    <div className='search-result-summary-container'>
+    <div
+      className='search-result-summary-container'
+      data-testid='search-result-summary'
+    >
       {props.searchResults.total} projects found for "{props.query}"
     </div>
   );

@@ -36,7 +36,7 @@ const SearchResults = (props) => {
         {props.searchResults ? (
           props.searchResults.results.map((result, index) => (
             // FIXME: key error
-            <Project key={index} project={result} />
+            <Project key={index} project={result} testId={`project-${index}`} />
           ))
         ) : (
           <span key='search-results-none'>No projects found</span>
