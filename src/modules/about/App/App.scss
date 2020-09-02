@@ -1,0 +1,23 @@
+@import '~prosearch-stylesheets/Colors';
+.about-app {
+  .about-header {
+    margin-bottom: 1em;
+  }
+
+  .about-contents div {
+    margin-bottom: 2em;
+  }
+
+  .inline-link {
+    color: $gray3;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.background-overlay.about-app {
+  // FIXME: Take entire background even if scroll beyond the set height.
+  height: 100%;
+}

@@ -3,6 +3,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import React, { useEffect, useState } from 'react';
 
 import { searchProjects } from 'prosearch-api/search';
+import AppLayout from 'prosearch-components/AppLayout';
 import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import SearchBox from 'prosearch-components/SearchBox';
 import SearchResultSummary from 'prosearch-components/SearchResultSummary';
@@ -54,7 +55,7 @@ const App = () => {
   };
 
   return (
-    <div className='app-content search-app'>
+    <AppLayout appClass='search-app'>
       <SearchHeader />
       <SearchBox
         placeholder={PLACEHOLDER_MSG}
@@ -91,7 +92,7 @@ const App = () => {
         onClose={onSnackbarClose}
       />
       <ScrollToTop />
-    </div>
+    </AppLayout>
   );
 };
 

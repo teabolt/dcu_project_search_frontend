@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Anchor from 'prosearch-components/Anchor';
 import DcuLogo from 'prosearch-images/dcu-logo.png';
 import GitHubLogo from 'prosearch-images/github-logo.png';
 
@@ -22,13 +23,12 @@ const Navbar = () => {
           <span className='main-navbar-separator'>•</span>
         </div>
         <div className='main-navbar-nav-item github-link'>
-          <a
+          <Anchor
             href='https://github.com/teabolt/dcu_project_search_frontend'
-            rel='noreferrer noopener'
             target='_blank'
           >
             <img src={GitHubLogo} alt='project github link' />
-          </a>
+          </Anchor>
         </div>
       </div>
     </nav>
