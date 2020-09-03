@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AboutApp from 'modules/about';
 import SearchApp from 'modules/search';
 
-import Navbar from 'modules/main/components/Navbar';
+import Footer from 'prosearch-components/Footer';
 
 import './App.scss';
 
@@ -12,7 +12,6 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <Navbar />
         <Switch>
           <Route path='/about'>
             <AboutApp />
@@ -21,6 +20,7 @@ function App() {
             <SearchApp />
           </Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );

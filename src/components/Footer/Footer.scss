@@ -1,0 +1,10 @@
+@import '~prosearch-stylesheets/Colors';
+
+.app-footer {
+  background-color: $purple2;
+  border-top: 1px solid $white;
+  justify-self: flex-end;
+  margin-top: 1em;
+  padding: 1em;
+  text-align: center;
+}

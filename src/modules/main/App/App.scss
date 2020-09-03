@@ -1,5 +1,11 @@
+@import '~prosearch-stylesheets/Flex';
+
 .App {
-  margin: 2em 20em 0 20em;
+  @include flex(column, wrap);
+
+  .app-content-container {
+    margin: 2em 20em 2em 20em;
+  }
 
   .app-content {
     margin-top: 6em;
