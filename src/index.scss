@@ -1,4 +1,5 @@
 @import '~prosearch-stylesheets/Colors';
+@import '~prosearch-stylesheets/Fonts';
 
 body {
   background: $blue1;
@@ -6,6 +7,7 @@ body {
   color: $white;
   margin: 0;
   font-family: 'Noto Sans TC', sans-serif;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -17,7 +17,7 @@ import './App.scss';
 
 const PLACEHOLDER_MSG = 'Search for a project, i.e. cloud, supervisor jane';
 
-const DEBOUNCE_WAIT_MS = 200;
+const DEBOUNCE_WAIT_MS = 300;
 
 const App = () => {
   const [query, setQuery] = useState('');

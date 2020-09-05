@@ -302,6 +302,7 @@ module.exports = function (webpackEnv) {
         'prosearch-api': path.resolve(paths.appSrc, 'api/'),
         'prosearch-components': path.resolve(paths.appSrc, 'components/'),
         'prosearch-constants': path.resolve(paths.appSrc, 'constants/'),
+        'prosearch-fonts': path.resolve(paths.appPath, 'fonts/'),
         'prosearch-stylesheets': path.resolve(paths.appSrc, 'stylesheets/'),
         'prosearch-views': path.resolve(paths.appSrc, 'views/'),
         modules: path.resolve(paths.appSrc, 'modules/'),

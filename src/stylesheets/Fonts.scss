@@ -1,3 +1,45 @@
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-weight: 100;
+  src: local('NotoSansTC-Thin'),
+    url('~prosearch-fonts/NotoSansTC/NotoSansTC-Thin.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-weight: 300;
+  src: local('NotoSansTC-Light'),
+    url('~prosearch-fonts/NotoSansTC/NotoSansTC-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-weight: normal;
+  src: local('NotoSansTC-Regular'),
+    url('~prosearch-fonts/NotoSansTC/NotoSansTC-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-weight: 500;
+  src: local('NotoSansTC-Medium'),
+    url('~prosearch-fonts/NotoSansTC/NotoSansTC-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-weight: 700;
+  src: local('NotoSansTC-Bold'),
+    url('~prosearch-fonts/NotoSansTC/NotoSansTC-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-weight: 900;
+  src: local('NotoSansTC-Black'),
+    url('~prosearch-fonts/NotoSansTC/NotoSansTC-Black.otf') format('opentype');
+}
+
 @mixin bold-font {
   font-weight: 600;
 }
