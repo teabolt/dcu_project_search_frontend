@@ -1,5 +1,5 @@
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import IconButton from '@material-ui/core/IconButton';
+import Fab from '@material-ui/core/Fab';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -27,14 +27,17 @@ const ScrollToTop = (props) => {
   }
 
   let node = (
-    <IconButton
+    <Fab
+      aria-label='scroll back to top'
       className={classNames('scroll-to-top', {
         'scroll-to-top-absolute': props.absolute,
       })}
+      color='secondary'
       onClick={scrollTop}
+      size='small'
     >
       <ArrowUpwardIcon />
-    </IconButton>
+    </Fab>
   );
   if (props.autoHide && !showScroll) {
     node = null;
