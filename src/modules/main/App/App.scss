@@ -3,11 +3,15 @@
 .App {
   @include flex(column, wrap);
 
+  position: relative;
+  min-height: 100vh;
+
   .app-content-container {
     margin: 2em 20em 2em 20em;
   }
 
   .app-content {
     margin-top: 6em;
+    margin-bottom: 6em;
   }
 }

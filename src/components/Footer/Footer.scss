@@ -1,10 +1,14 @@
 @import '~prosearch-stylesheets/Colors';
 
 .app-footer {
+  // "Sticky" footer
+  position: absolute;
+  bottom: 0;
+  // Makes container stretch to the full width.
+  left: 0;
+  right: 0;
   background-color: $purple2;
   border-top: 1px solid $white;
-  justify-self: flex-end;
-  margin-top: 1em;
   padding: 1em;
   text-align: center;
 }
