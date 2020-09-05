@@ -9,8 +9,8 @@
   border-radius: 20px;
   box-shadow: 0 0.3em 1em $blue2;
   color: $black;
-  text-align: start;
   padding: 2em 2em 1em 2em;
+  text-align: start;
 
   // Need this to get rid of an unexpected line at the top of the accordion container
   &::before {
@@ -34,6 +34,12 @@
       .project-year {
         color: $gray1;
       }
+    }
+
+    // Override accordion summary being unselectable and having pointer cursor.
+    &.MuiButtonBase-root {
+      cursor: auto;
+      user-select: text;
     }
 
     .MuiAccordionSummary-content {
