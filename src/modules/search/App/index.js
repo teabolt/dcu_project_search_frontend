@@ -13,6 +13,8 @@ import SearchResults from 'prosearch-views/SearchResults';
 
 import SearchHeader from 'modules/search/components/SearchHeader';
 
+import { isValidQuery } from './utils';
+
 import './App.scss';
 
 const PLACEHOLDER_MSG = 'Search for a project, i.e. cloud, supervisor jane';
@@ -36,7 +38,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (query) {
+    if (isValidQuery(query)) {
       (async () => {
         const results = await loadResults(0);
         setSearchResults(results);
@@ -62,7 +64,7 @@ const App = () => {
         value={query}
         onChange={onChangeSearch}
       />
-      {query && (
+      {isValidQuery(query) && (
         <>
           {searchResults ? (
             <>
