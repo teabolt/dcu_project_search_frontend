@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import Grid from '@material-ui/core/Grid';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,9 +11,13 @@ const AppLayout = (props) => {
   return (
     <div className={classNames('app-content-container', props.appClass)}>
       <BackgroundOverlay className={props.appClass} />
-      <Navbar />
+      <Grid container direction='row' justify='center'>
+        <Grid item xs={12} sm={11} md={10} lg={8} xl={6}>
+          <Navbar />
+          <div className='app-content'>{props.children}</div>
+        </Grid>
+      </Grid>
       <ScrollToTop />
-      <div className='app-content'>{props.children}</div>
     </div>
   );
 };
