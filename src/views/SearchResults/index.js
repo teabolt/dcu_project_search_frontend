@@ -1,12 +1,11 @@
 import _ from 'lodash';
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 
 import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import Project from 'prosearch-components/Project';
-
-import './SearchResults.scss';
 
 const SearchResults = (props) => {
   const hasMore = () => {
@@ -28,22 +27,26 @@ const SearchResults = (props) => {
       <InfiniteScroll
         className='search-results'
         pageStart={0}
-        initialLoad={false} // We do an initial load by ourselves.
+        initialLoad={false} // We do the initial load by ourselves.
         loadMore={loadMore}
         hasMore={hasMore()}
         loader={<LoadingSpinner key='loading-spinner' />}
       >
-        {props.searchResults ? (
-          props.searchResults.results.map((result, index) => (
-            <Project
-              key={`project-${index}`}
-              project={result}
-              testId={`project-${index}`}
-            />
-          ))
-        ) : (
-          <span key='search-results-none'>No projects found</span>
-        )}
+        <Grid container direction='column' spacing={7} wrap='nowrap'>
+          {props.searchResults ? (
+            props.searchResults.results.map((result, index) => (
+              <Grid item>
+                <Project
+                  key={`project-${index}`}
+                  project={result}
+                  testId={`project-${index}`}
+                />
+              </Grid>
+            ))
+          ) : (
+            <span key='search-results-none'>No projects found</span>
+          )}
+        </Grid>
       </InfiniteScroll>
     </div>
   );
