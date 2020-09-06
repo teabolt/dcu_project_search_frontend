@@ -1,3 +1,6 @@
+/* eslint-disable no-process-exit */
+/* eslint-disable sort-keys */
+/* eslint-disable no-console */
 'use strict';
 
 // Do this as the first thing so that any code reading it knows the right env.
@@ -122,7 +125,7 @@ checkBrowsers(paths.appPath, isInteractive)
         return console.log(err);
       }
       if (isInteractive) {
-        clearConsole();
+        // clearConsole();
       }
 
       // We used to support resolving modules according to `NODE_PATH`.
