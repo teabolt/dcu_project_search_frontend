@@ -1,0 +1,13 @@
+@import '~prosearch-stylesheets/Flex';
+
+.search-results-container {
+  .search-results {
+    @include flex(column, nowrap);
+
+    align-items: center;
+
+    .search-results-loading {
+      margin-top: 5em;
+    }
+  }
+}

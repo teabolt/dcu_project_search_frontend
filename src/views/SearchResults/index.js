@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import Project from 'prosearch-components/Project';
 
+import './SearchResults.scss';
+
 const SearchResults = (props) => {
   const hasMore = () => {
     return _.size(props.searchResults.results) < props.searchResults.total;
@@ -30,22 +32,30 @@ const SearchResults = (props) => {
         initialLoad={false} // We do the initial load by ourselves.
         loadMore={loadMore}
         hasMore={hasMore()}
-        loader={<LoadingSpinner key='loading-spinner' />}
+        loader={
+          <LoadingSpinner
+            className='search-results-loading'
+            key='loading-spinner'
+          />
+        }
       >
-        <Grid container direction='column' spacing={7} wrap='nowrap'>
-          {props.searchResults ? (
+        <Grid
+          container
+          direction='column'
+          spacing={7}
+          wrap='nowrap'
+          alignItems='center'
+        >
+          {props.searchResults &&
             props.searchResults.results.map((result, index) => (
-              <Grid item>
+              <Grid item className='search-results-grid-item'>
                 <Project
                   key={`project-${index}`}
                   project={result}
                   testId={`project-${index}`}
                 />
               </Grid>
-            ))
-          ) : (
-            <span key='search-results-none'>No projects found</span>
-          )}
+            ))}
         </Grid>
       </InfiniteScroll>
     </div>
