@@ -8,9 +8,12 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 
-import FallbackPlaceholder from 'prosearch-components/FallbackPlaceholder';
+import Anchor from 'prosearch-components/Anchor';
+import ListItem from 'prosearch-components/ListItem';
 import StudentsList from 'prosearch-components/StudentsList';
+import SupervisorRenderer from 'prosearch-components/SupervisorRenderer';
 
 import './Project.scss';
 
@@ -55,13 +58,18 @@ const Project = (props) => {
           )}
         >
           <div className='project-header'>
-            <div className='project-title'>{props.project.title}</div>
-            <div className='project-year'>{props.project.year}</div>
+            <div className='project-title'>
+              <Typography variant='h5'>{props.project.title}</Typography>
+            </div>
+            <div className='project-year'>
+              <Typography variant='h5'>{props.project.year}</Typography>
+            </div>
           </div>
-          <div className='label-value-pair-label'>Description</div>
-          <div className='label-value-pair-value'>
-            <FallbackPlaceholder node={props.project.description} />
-          </div>
+          <ListItem
+            className='project-description'
+            label='Description'
+            value={props.project.description}
+          />
         </div>
         {!expanded && (
           <IconButton
@@ -73,45 +81,46 @@ const Project = (props) => {
         )}
       </AccordionSummary>
       <AccordionDetails className='project-expanded-container'>
-        <div className={className('label-value-pair', 'project-programme')}>
-          <div className='label-value-pair-label'>Programme</div>
-          <div className='label-value-pair-value'>
-            <FallbackPlaceholder node={props.project.programme} />
-          </div>
-        </div>
-        <div className={className('label-value-pair', 'project-supervisor')}>
-          <div className='label-value-pair-label'>Supervisor</div>
-          <div className='label-value-pair-value'>
-            <FallbackPlaceholder node={props.project.supervisor} />
-          </div>
-        </div>
-        <div className={className('label-value-pair', 'project-students')}>
-          <div className='label-value-pair-label'>Students</div>
-          <div className='label-value-pair-value'>
-            <FallbackPlaceholder
-              node={<StudentsList students={props.project.students} />}
-            />
-          </div>
-        </div>
-        <div className={className('label-value-pair', 'project-area')}>
-          <div className='label-value-pair-label'>Area</div>
-          <div className='label-value-pair-value'>
-            <FallbackPlaceholder node={props.project.area} />
-          </div>
-        </div>
-        <div className={className('label-value-pair', 'project-technology')}>
-          <div className='label-value-pair-label'>Technology</div>
-          <div className='label-value-pair-value'>
-            <FallbackPlaceholder node={props.project.technology} />
-          </div>
-        </div>
+        <ListItem
+          className='project-programme'
+          label='Programme'
+          value={props.project.programme}
+        />
+        <ListItem
+          className='project-supervisor'
+          label='Supervisor'
+          value={<SupervisorRenderer supervisor={props.project.supervisor} />}
+        />
+        <ListItem
+          className='project-students'
+          label='Students'
+          value={<StudentsList students={props.project.students} />}
+        />
+        <ListItem
+          className='project-area'
+          label='Area'
+          value={props.project.area}
+        />
+        <ListItem
+          className='project-technology'
+          label='Technology'
+          value={props.project.technology}
+        />
         {props.project.video && (
-          <div className={className('label-value-pair', 'project-video')}>
-            <div className='label-value-pair-label'>Video</div>
-            <div className='label-value-pair-value'>
-              <FallbackPlaceholder node={props.project.video} />
-            </div>
-          </div>
+          <ListItem
+            className='project-video'
+            label='Video'
+            value={
+              <Anchor
+                className='inline-link'
+                // FIXME: Check that link doesn't have the protocol in it already
+                href={`https://${props.project.video}`}
+                target='_blank'
+              >
+                {props.project.video}
+              </Anchor>
+            }
+          />
         )}
         <IconButton
           className='project-expand-control project-expand-control-less'

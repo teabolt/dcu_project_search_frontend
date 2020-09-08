@@ -25,3 +25,9 @@ a {
   text-decoration: inherit;
   color: inherit;
 }
+
+.inline-link {
+  &:hover {
+    text-decoration: underline;
+  }
+}

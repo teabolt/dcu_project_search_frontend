@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Anchor from 'prosearch-components/Anchor';
+
 import './StudentsList.scss';
 
 const StudentsList = (props) => {
@@ -12,7 +14,11 @@ const StudentsList = (props) => {
             className='students-list-student'
             key={`students-list-student-${index}`}
           >
-            {student.name} ({student.email})
+            {student.name} (
+            <Anchor className='inline-link' href={`mailto:${student.email}`}>
+              {student.email}
+            </Anchor>
+            )
           </span>
         );
       })}

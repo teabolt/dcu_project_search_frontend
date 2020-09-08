@@ -19,11 +19,10 @@
 
   .project-summary {
     .project-header {
-      @include flex(row, wrap);
+      @include flex(row, nowrap);
 
       justify-content: space-between;
       margin-bottom: 2em;
-      font-size: 1.2em; // TODO: move to a fonts stylesheet
 
       .project-title {
         @include bold-font;
@@ -64,8 +63,8 @@
     }
   }
 
-  .label-value-pair {
-    .label-value-pair-label {
+  .list-item {
+    .list-item-label {
       @include bold-font;
 
       color: $gray1;
@@ -73,7 +72,7 @@
     }
   }
 
-  .label-value-pair:not(:last-child) {
+  .list-item:not(:last-child) {
     margin-bottom: 1.5em;
   }
 }
