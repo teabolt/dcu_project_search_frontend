@@ -4,10 +4,12 @@ const path = require('path');
 
 const paths = require('./config/paths');
 
+require('./config/env');
+
 const app = express();
 
-const port = 3000 || process.env.PORT;
-const host = 'localhost' || process.env.HOST;
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || 'localhost';
 
 app.use(express.static(path.join(__dirname, paths.build)));
 
