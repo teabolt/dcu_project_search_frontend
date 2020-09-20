@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Anchor from 'prosearch-components/Anchor';
+import * as ProsearchPropTypes from 'prosearch-proptypes';
 
 import './StudentsList.scss';
 
@@ -14,11 +15,19 @@ const StudentsList = (props) => {
             className='students-list-student'
             key={`students-list-student-${index}`}
           >
-            {student.name} (
-            <Anchor className='inline-link' href={`mailto:${student.email}`}>
-              {student.email}
-            </Anchor>
-            )
+            {student.name}
+            {student.email && (
+              <>
+                {' ('}
+                <Anchor
+                  className='inline-link'
+                  href={`mailto:${student.email}`}
+                >
+                  {student.email}
+                </Anchor>
+                {')'}
+              </>
+            )}
           </span>
         );
       })}
@@ -27,12 +36,7 @@ const StudentsList = (props) => {
 };
 
 StudentsList.propTypes = {
-  students: PropTypes.arrayOf(
-    PropTypes.exact({
-      email: PropTypes.string,
-      name: PropTypes.string,
-    }).isRequired
-  ).isRequired,
+  students: ProsearchPropTypes.ProjectStudents.isRequired,
 };
 
 export default StudentsList;

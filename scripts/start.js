@@ -1,5 +1,4 @@
 /* eslint-disable no-process-exit */
-/* eslint-disable sort-keys */
 /* eslint-disable no-console */
 'use strict';
 

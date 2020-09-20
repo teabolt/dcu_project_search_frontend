@@ -22,10 +22,9 @@ const ListItem = (props) => {
 
 ListItem.propTypes = {
   label: PropTypes.node.isRequired,
-  value: PropTypes.node.isRequired,
 
-  // eslint-disable-next-line sort-keys
   className: PropTypes.string,
+  value: PropTypes.node,
 };
 
 export default ListItem;

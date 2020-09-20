@@ -14,6 +14,7 @@ import Anchor from 'prosearch-components/Anchor';
 import ListItem from 'prosearch-components/ListItem';
 import StudentsList from 'prosearch-components/StudentsList';
 import SupervisorRenderer from 'prosearch-components/SupervisorRenderer';
+import * as ProsearchPropTypes from 'prosearch-proptypes';
 
 import './Project.scss';
 
@@ -107,6 +108,13 @@ const Project = (props) => {
           label='Technology'
           value={props.project.technology}
         />
+        {props.project.platform && (
+          <ListItem
+            className='project-platform'
+            label='Platform'
+            value={props.project.platform}
+          />
+        )}
         {props.project.video && (
           <ListItem
             className='project-video'
@@ -136,7 +144,7 @@ const Project = (props) => {
 };
 
 Project.propTypes = {
-  project: PropTypes.object.isRequired, // FIXME
+  project: ProsearchPropTypes.Project.isRequired,
 
   testId: PropTypes.string,
 };

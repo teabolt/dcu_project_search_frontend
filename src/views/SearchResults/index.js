@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import Project from 'prosearch-components/Project';
+import * as ProsearchPropTypes from 'prosearch-proptypes';
 
 import './SearchResults.scss';
 
@@ -63,9 +64,8 @@ const SearchResults = (props) => {
 };
 
 SearchResults.propTypes = {
-  searchResults: PropTypes.object.isRequired, // FIXME
+  searchResults: ProsearchPropTypes.SearchResults.isRequired,
 
-  // eslint-disable-next-line sort-keys
   onLoadResults: PropTypes.func.isRequired,
   onSetSearchResults: PropTypes.func.isRequired,
 };
