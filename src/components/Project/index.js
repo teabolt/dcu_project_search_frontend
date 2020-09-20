@@ -17,8 +17,8 @@ import SupervisorRenderer from 'prosearch-components/SupervisorRenderer';
 
 import './Project.scss';
 
-const EVENT_TARGET_ICON = 'MuiSvgIcon-root';
-const EVENT_TARGET_BUTTON = 'MuiButtonBase-root';
+const EXPAND_EVENT_TARGET_CLASSES = ['MuiButtonBase-root', 'MuiSvgIcon-root'];
+const EXPAND_EVENT_TARGET_TAGS = ['path'];
 
 const commonIconProps = {
   color: 'inherit',
@@ -30,9 +30,10 @@ const Project = (props) => {
 
   const onClickExpand = (event, newValue) => {
     const targetClass = _.get(event, ['target', 'classList', 0]);
+    const targetTag = _.get(event, ['target', 'tagName']);
     if (
-      targetClass &&
-      (targetClass === EVENT_TARGET_ICON || targetClass === EVENT_TARGET_BUTTON)
+      EXPAND_EVENT_TARGET_CLASSES.some((target) => target === targetClass) ||
+      EXPAND_EVENT_TARGET_TAGS.some((tag) => tag === targetTag)
     ) {
       // Only change the accordion if the button is clicked.
       setExpanded(newValue);
