@@ -2,11 +2,7 @@
 
 .app-footer {
   // "Sticky" footer
-  position: absolute;
-  bottom: 0;
-  // Makes container stretch to the full width.
-  left: 0;
-  right: 0;
+  margin-top: auto;
   background-color: $purple2;
   border-top: 1px solid $white;
   padding: 1em;

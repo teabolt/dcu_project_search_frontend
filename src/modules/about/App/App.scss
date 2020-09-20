@@ -1,19 +1,26 @@
 @import '~prosearch-stylesheets/Colors';
 .about-app {
   .about-header {
-    margin-bottom: 1em;
-  }
-
-  .about-contents div {
     margin-bottom: 2em;
   }
 
-  .inline-link {
-    color: $gray3;
+  .about-contents {
+    border-radius: 20px;
+    box-shadow: 0 0.3em 1em $blue2;
+    color: $black;
+    padding: 2em;
+
+    .inline-link {
+      color: $black;
+    }
+
+    div {
+      margin-bottom: 2em;
+    }
   }
 }
 
 .background-overlay.about-app {
   // FIXME: Take entire background even if scroll beyond the set height.
-  height: 100%;
+  height: 20em;
 }
