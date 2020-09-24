@@ -13,7 +13,7 @@ describe('Search', function () {
   });
 
   it('should navigate to the search page', function () {
-    cy.get('.search-app').contains('Project Search');
+    cy.get('.app-content-container').contains('Project Search');
   });
 
   it('should search for projects', function () {

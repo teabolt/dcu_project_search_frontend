@@ -15,19 +15,19 @@
 
 import './commands';
 
-beforeEach(() => {
-  cy.window().then((win) => {
-    cy.spy(win.console, 'error');
-  });
-});
+// beforeEach(() => {
+//   cy.window().then((win) => {
+//     cy.spy(win.console, 'error');
+//   });
+// });
 
 before(() => {
   cy.visit('http://localhost:3000');
 });
 
 // TODO: Change to afterEach once we can filter out certain errors.
-after(() => {
-  cy.window().then((win) => {
-    expect(win.console.error).to.have.callCount(0);
-  });
-});
+// after(() => {
+//   cy.window().then((win) => {
+//     expect(win.console.error).to.have.callCount(0);
+//   });
+// });
