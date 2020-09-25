@@ -27,3 +27,6 @@ yarn-error.log*
 # vscode
 *.code-workspace
 .vscode
+
+# environment
+.env
