@@ -1,6 +1,8 @@
 {
   "short_name": "DCU Project Search",
-  "name": "DCU Project Search",
+  "name": "DCU Project Search – Browse Student Projects",
+  "description": "Browse our library of extracted projects from final year students of Engineering and Computing in Dublin City University. Search by project description, area, year, author, supervisor, and more.",
+  "categories": ["education"],
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +22,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000"
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "lang": "en-GB"
 }
