@@ -30,8 +30,8 @@ cache:
 install:
   - npm ci
 
-script: npm run prettify-check && \
-  npm run stylelint && \
-  npm run lint && \
-  npm run test && \
+script: npm run prettify-check &&
+  npm run stylelint &&
+  npm run lint &&
+  npm run test &&
   npx start-server-and-test start http://localhost:3000 test-e2e
