@@ -4,12 +4,12 @@
 
 describe('Search', function () {
   const TEST_QUERY = 'test';
-  const SEARCH_URL = 'http://localhost:3001/api/v1/search';
+  const SEARCH_ENDPOINT = 'search';
 
   beforeEach(function () {
     // Mock a response from the search endpoint.
     cy.server();
-    cy.route('GET', `${SEARCH_URL}*`, 'fixture:search.json');
+    cy.route('GET', `**${SEARCH_ENDPOINT}**`, 'fixture:search.json');
   });
 
   it('should navigate to the search page', function () {

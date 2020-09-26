@@ -12,18 +12,21 @@ const Navbar = () => {
     <nav className='main-navbar'>
       <div className='main-navbar-nav-items'>
         <div className='main-navbar-nav-item right-nav home-link'>
-          <Link to='/'>
+          <Link data-testid='home-link' to='/'>
             <img src={DcuLogo} alt='dcu logo' />
           </Link>
         </div>
         <div className='main-navbar-nav-item about-link'>
-          <Link to='/about'>About</Link>
+          <Link data-testid='about-link' to='/about'>
+            About
+          </Link>
         </div>
         <div className='main-navbar-nav-item'>
           <span className='main-navbar-separator'>•</span>
         </div>
         <div className='main-navbar-nav-item github-link'>
           <Anchor
+            data-testid='github-link'
             href='https://github.com/teabolt/dcu_project_search_frontend'
             target='_blank'
           >
