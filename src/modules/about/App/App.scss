@@ -14,7 +14,7 @@
       color: $black;
     }
 
-    div {
+    div:not(:last-child) {
       margin-bottom: 2em;
     }
   }

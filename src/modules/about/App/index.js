@@ -21,7 +21,7 @@ const App = () => {
       </Typography>
       <Card className='about-contents'>
         <CardContent>
-          <Typography variant='h6'>
+          <Typography variant='p'>
             <div className='about-description'>
               At the end of every academic year{' '}
               <Anchor href='https://dcu.ie' {...commonAnchorProps}>
