@@ -12,11 +12,11 @@ import SearchResults from 'prosearch-views/SearchResults';
 
 import SearchHeader from 'modules/search/components/SearchHeader';
 
-import { isValidQuery } from './utils';
+import { isValidQuery, validateResults } from './utils';
 
 import './App.scss';
 
-const PLACEHOLDER_MSG = 'Search for a project, i.e. cloud, supervisor jane';
+const PLACEHOLDER_MSG = 'Search for a project, i.e. machine learning, 2020, david sinclair';
 
 const DEBOUNCE_WAIT_MS = 300;
 
@@ -65,7 +65,7 @@ const App = () => {
       />
       {isValidQuery(query) && (
         <>
-          {searchResults ? (
+          {validateResults(searchResults) ? (
             <>
               <SearchResultSummary
                 query={query}
