@@ -16,7 +16,8 @@ import { isValidQuery, validateResults } from './utils';
 
 import './App.scss';
 
-const PLACEHOLDER_MSG = 'Search for a project, i.e. machine learning, 2020, david sinclair';
+const PLACEHOLDER_MSG =
+  'Search for a project, i.e. machine learning, 2020, david sinclair';
 
 const DEBOUNCE_WAIT_MS = 300;
 

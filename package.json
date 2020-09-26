@@ -135,7 +135,10 @@
       "^prosearch-api(.*)$": "<rootDir>/src/api/$1",
       "^prosearch-components(.*)$": "<rootDir>/src/components/$1",
       "^prosearch-constants(.*)$": "<rootDir>/src/constants/$1",
+      "^prosearch-fonts(.*)$": "<rootDir>/src/fonts/$1",
+      "prosearch-proptypes(.*)$": "<rootDir>/src/proptypes/$1",
       "^prosearch-stylesheets(.*)$": "<rootDir>/src/stylesheets/$1",
+      "^prosearch-utils(.*)$": "<rootDir>/src/utils/$1",
       "^prosearch-views(.*)$": "<rootDir>/src/views/$1",
       "^modules(.*)$": "<rootDir>/src/modules/$1",
       "^prosearch-images(.*)$": "<rootDir>/images/$1"

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Anchor from 'prosearch-components/Anchor';
 import * as ProsearchPropTypes from 'prosearch-proptypes';
