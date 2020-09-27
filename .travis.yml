@@ -7,6 +7,14 @@ language: node_js
 node_js:
   - 14
 
+env:
+  global:
+    - secure: Z0eIQQLqZ2ffJPh73aPJof76nhQARrNUzJUm22sW2Hahacq9jBLZPQ5s1zlgQCyKl6KwmZ7/B2KL9yyNs4m9SnDPkrGdbhcRlPK7PlTDvC4nNlQxQwVid/ZpE5vGmM8uI4PZJsqOzjPONeQ79ozePiMCSg00i/hab8CNlIei+E0a94ZQYtPK+1qp5q1++tN814/TmxmpJpCCwvCi+OJGl3oUD1lZA2B0iF9AKrf6HUMoiAwLpMoAjDozC2IBMRXrLk0eoXAThXa7nE0ylvOPfBawhVWB8r90nWrlcXnp1JYX4mzh9N3Xl7Siof2o+qaNIC5Z8U0Lh3Prylxo1EtyYcTdtZ3hK81u4bPT4bTAwNz2CnuRVNvZ/iXfLBHXrHxLRdvXSKbV8kdx1PW/7fZENJSYx8h4dGZKkkeu7cRFQ0Cq1yGtzj0oRpoFwfFjjsIdfuykZVDOpt/WOpiczJEYXHw2XJC5llR7jvVIIPaum0S6E/Svcvelvz1LlXkdFYO8ezSZnrZX5kAUolFibLqTUgiYWEnwl1+KrVdCHSrGxPShVhSIvlAuXSp9320qkdujn08DVupjUCq/ywBB3wbB9lQDQM7myyWnUv/WYI2U35NcZgNpYN1th4wtXASuUVkjJCxbkql84m++QSSgJAsVYXbbl/iDf51hQ5FOWxIHSMk=
+    - secure: ksMMNb/YgEt7g/M/z2opU1r+OBpnrR88GvEnAOZH74dveuh1aoC22ouj87OPw4IQOnwNdOnJ8MwpTt2DGwD986QAj/JMvWGNEhnkN71PzsqTwLsoihjdQox2SpLwn6GRYw7Kvt3KqdZYDka6cQgW2CjdyJJVqrGpw3EToNdm82mIh1jRLrppWBvA+hnb+WLX4hIG69weg68DACUkQnGsnfF9FFuuDd1k0c9ewmztII1a3vSkFy+h4z51cNy3KZVPpGzHY8thNl6eVEr3UNA3rAly9AJ2uc5m+FKAphZNx646vqhOqMsvFEhmXXTNueYhNDXcxeOqVh4IdRTQx4TMJqvD1Ye0FpRyDa+Lrpj7ZI0cMg08defqeG1aC1HP4XHV8/J3sOdmn+f9t4wKt5sFc7ZglJr3X3H4xkCUoZi+k48HGjBAEO7fhpZA8mf9WHJY+E+HKx4nQhhLm4ItK3B5d2HscJaXohCylgyLY0XNkehctcH2N7/RHQMFmNAigW3/4oVT+adewo18Uk0Mb81jU5X+W4zx5eu+Vkj3OrO2cI0wRNljnLdlpalYrqzrL+w0gDToEuNsxoO8WEFuoUTAy4uzVVtwm9KF3tv2QMnoGN1uTSEvGJrY6lkE7a6jTEFcXkhyczrc7zuGXuJHL0zCBMQB03I57ClSFLk8ixU46zU=
+    # Environment variables for docker production build (these cannot be changed afterwards)
+    - NODE_ENV=production
+    - REACT_APP_BACKEND_HOST=https://prosearch.tomasb.ie:8080
+
 addons:
   apt:
     packages:
@@ -35,3 +43,8 @@ script: npm run prettify-check &&
   npm run lint &&
   npm run test &&
   npx start-server-and-test start http://localhost:3000 test-e2e
+
+after_success:
+  - docker build -t tomasbalt/dcu_project_search_frontend:latest .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push tomasbalt/dcu_project_search_frontend
