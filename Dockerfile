@@ -13,14 +13,11 @@ RUN npm install --production
 # Copy the app source code
 COPY . ./
 
-# Set environment variables for the app
-ENV NODE_ENV production
-
 # Build the app
 RUN npm run build
 
 # Default port we intend to expose
-EXPOSE 3000
+EXPOSE 80
 
 # Default command to run when starting the container
 CMD ["npm", "run", "serve"]
