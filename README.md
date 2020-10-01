@@ -1,3 +1,3 @@
-# dcu_project_search_frontend
+# DCU Project Search Frontend
 
-DCU Project Search Front-end
+Web app for Dublin City University final year projects (https://github.com/teabolt/dcu_eng_comp_projects_dataset).
