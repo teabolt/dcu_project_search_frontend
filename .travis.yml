@@ -44,6 +44,6 @@ script: npm run prettify-check &&
   npx start-server-and-test start http://localhost:3000 test-e2e
 
 after_success:
-  - docker build -t tomasbalt/dcu_project_search_frontend:latest .
+  - docker build --build-arg REACT_APP_BACKEND_HOST -t tomasbalt/dcu_project_search_frontend:latest .
   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
   - docker push tomasbalt/dcu_project_search_frontend
