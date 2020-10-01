@@ -15,7 +15,7 @@ const commonAnchorProps = {
 
 const App = () => {
   return (
-    <AppLayout appClass='about-app'>
+    <AppLayout appClass='about-app' appName='About' showBreadcrumbs={true}>
       <Typography className='about-header' variant='h2'>
         About
       </Typography>

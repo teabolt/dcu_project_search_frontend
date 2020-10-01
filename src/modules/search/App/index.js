@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import _ from 'lodash';
 import Snackbar from '@material-ui/core/Snackbar';
 import PropTypes from 'prop-types';
@@ -54,7 +55,7 @@ const App = (props) => {
   };
 
   return (
-    <AppLayout appClass='search-app'>
+    <AppLayout appClass={classNames('search-app', 'home-app')} appName='Search'>
       <SearchHeader />
       <SearchBox
         placeholder={PLACEHOLDER_MSG}

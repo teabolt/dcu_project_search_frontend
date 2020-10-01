@@ -1,0 +1,11 @@
+@import '~prosearch-stylesheets/Colors';
+
+.nav-breadcrumbs {
+  .MuiBreadcrumbs-li {
+    color: $white;
+  }
+
+  .MuiBreadcrumbs-separator {
+    color: $white;
+  }
+}
