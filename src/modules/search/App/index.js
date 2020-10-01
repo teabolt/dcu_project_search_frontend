@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import Snackbar from '@material-ui/core/Snackbar';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
 import { searchProjects } from 'prosearch-api/search';
@@ -7,29 +8,25 @@ import AppLayout from 'prosearch-components/AppLayout';
 import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import SearchBox from 'prosearch-components/SearchBox';
 import SearchResultSummary from 'prosearch-components/SearchResultSummary';
+import withQueryParam from 'prosearch-components/withQueryParam';
 import { SEARCH_DEFAULT_PAGINATION_SIZE } from 'prosearch-constants';
 import SearchResults from 'prosearch-views/SearchResults';
 
 import SearchHeader from 'modules/search/components/SearchHeader';
 
+import { DEBOUNCE_WAIT_MS, PLACEHOLDER_MSG } from './constants';
 import { isValidQuery, validateResults } from './utils';
 
 import './App.scss';
 
-const PLACEHOLDER_MSG =
-  'Search for a project, i.e. machine learning, 2020, david sinclair';
-
-const DEBOUNCE_WAIT_MS = 300;
-
-const App = () => {
-  const [query, setQuery] = useState('');
+const App = (props) => {
   const [searchResults, setSearchResults] = useState(null);
   const [error, setError] = useState(null);
 
   const loadResults = async (page) => {
     try {
       const fromOffset = page * SEARCH_DEFAULT_PAGINATION_SIZE;
-      const res = await searchProjects(query, fromOffset);
+      const res = await searchProjects(props.query, fromOffset);
       return res;
     } catch (err) {
       setError(String(err));
@@ -38,16 +35,16 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (isValidQuery(query)) {
+    if (isValidQuery(props.query)) {
       (async () => {
         const results = await loadResults(0);
         setSearchResults(results);
       })();
     }
-  }, [query]);
+  }, [props.query]);
 
   const onChangeSearch = _.debounce((newQuery) => {
-    setQuery(newQuery);
+    props.setQuery(newQuery);
   }, DEBOUNCE_WAIT_MS);
 
   const onSnackbarClose = (_event, reason) => {
@@ -61,15 +58,15 @@ const App = () => {
       <SearchHeader />
       <SearchBox
         placeholder={PLACEHOLDER_MSG}
-        value={query}
+        value={props.query}
         onChange={onChangeSearch}
       />
-      {isValidQuery(query) && (
+      {isValidQuery(props.query) && (
         <>
           {validateResults(searchResults) ? (
             <>
               <SearchResultSummary
-                query={query}
+                query={props.query}
                 searchResults={searchResults}
               />
               <SearchResults
@@ -97,4 +94,10 @@ const App = () => {
   );
 };
 
-export default App;
+App.propTypes = {
+  query: PropTypes.string.isRequired,
+
+  setQuery: PropTypes.func.isRequired,
+};
+
+export default withQueryParam(App, 'query', 'setQuery', '');

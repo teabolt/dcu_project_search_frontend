@@ -19,6 +19,7 @@ describe('Search', function () {
   it('should search for projects', function () {
     cy.get('[data-testid="search-box"]').type(TEST_QUERY);
     cy.waitForLoadingSpinners();
+    cy.url().should('include', `query=${TEST_QUERY}`);
   });
 
   it('should show a summary of results', function () {
