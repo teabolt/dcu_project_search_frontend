@@ -32,32 +32,32 @@ const App = () => {
                 href='https://www.dcu.ie/engineering_and_computing/Final-Year-Projects-Expo.shtml'
                 {...commonAnchorProps}
               >
-                project expo
+                project exposition
               </Anchor>{' '}
               in which final year Engineering and Computing students present
-              their year projects to employers and the faculty. We have
+              their year-long projects to employers and the faculty. We have
               collected the data of all exhibited projects since 2011 and
               combined it into a single{' '}
               <Anchor
-                href='https://github.com/teabolt/dcu_eng_comp_projects_dataset/'
+                href='https://github.com/teabolt/dcu_eng_comp_projects_dataset'
                 {...commonAnchorProps}
               >
-                machine-readable dataset
+                dataset
               </Anchor>
-              . We have built this{' '}
-              <Anchor href='https://reactjs.org/' {...commonAnchorProps}>
+              . On top of the dataset we have built this{' '}
+              <Anchor href='https://reactjs.org' {...commonAnchorProps}>
                 React
               </Anchor>
               —
-              <Anchor href='https://expressjs.com/' {...commonAnchorProps}>
+              <Anchor href='https://expressjs.com' {...commonAnchorProps}>
                 Express
               </Anchor>
               —
-              <Anchor href='https://www.elastic.co/' {...commonAnchorProps}>
+              <Anchor href='https://www.elastic.co' {...commonAnchorProps}>
                 ElasticSearch
               </Anchor>{' '}
               web application to let future students, lecturers or employers
-              search for past projects for inspiration and ideas.
+              search for past projects to find inspiration and ideas.
             </div>
             <div className='about-copyright'>
               Any third-party material presented on the website belongs to their
@@ -67,28 +67,42 @@ const App = () => {
                 href='https://github.com/teabolt/dcu_project_search_frontend'
                 {...commonAnchorProps}
               >
-                dcu_project_search_frontend
+                frontend
               </Anchor>
               {', '}
               <Anchor
                 href='https://github.com/teabolt/dcu_project_search_backend'
                 {...commonAnchorProps}
               >
-                dcu_project_search_backend
+                backend
               </Anchor>
               {', '}
               <Anchor
                 href='https://github.com/teabolt/dcu_project_search_elasticsearch'
                 {...commonAnchorProps}
               >
-                dcu_project_search_elasticsearch
+                ElasticSearch
+              </Anchor>
+              {', '}
+              <Anchor
+                href='https://github.com/teabolt/dcu_project_search_deployment'
+                {...commonAnchorProps}
+              >
+                deployment
+              </Anchor>
+              {', '}
+              <Anchor
+                href='https://github.com/teabolt/dcu_eng_comp_projects_dataset'
+                {...commonAnchorProps}
+              >
+                deployment
               </Anchor>
               {'.'}
             </div>
             <div className='about-credits'>
-              This website has been built by{' '}
+              This application has been developed by{' '}
               <Anchor
-                href='https://www.linkedin.com/in/tbalt/'
+                href='https://www.linkedin.com/in/tbalt'
                 {...commonAnchorProps}
               >
                 Tomas Baltrunas
@@ -100,7 +114,14 @@ const App = () => {
               >
                 Enoch Oppong
               </Anchor>{' '}
-              for help with data collection and Rosee Byrne for UI/UX review.
+              for help with data collection and{' '}
+              <Anchor
+                href='https://www.linkedin.com/in/rosee-byrne-675866a6'
+                {...commonAnchorProps}
+              >
+                Rosee Byrne
+              </Anchor>{' '}
+              for UI/UX review.
             </div>
             <div className='about-contacts'>
               Please report any issues under the{' '}
