@@ -2,17 +2,27 @@ import Input from '@material-ui/core/Input';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import Clear from './Clear';
+
 import './SearchBox.scss';
 
 const SearchBox = (props) => {
   const [currentValue, setCurrentValue] = useState(props.value);
 
-  const onChangeValue = (event) => {
-    const val = event.target.value;
+  const onUpdate = (value) => {
     // Keep track of current value in real time internally
     // allowing onChange to update in its own time.
-    setCurrentValue(val);
-    props.onChange(val);
+    setCurrentValue(value);
+    props.onChange(value);
+  };
+
+  const onChangeEvent = (event) => {
+    const val = event.target.value;
+    onUpdate(val);
+  };
+
+  const onClear = () => {
+    onUpdate('');
   };
 
   return (
@@ -20,9 +30,14 @@ const SearchBox = (props) => {
       <Input
         data-testid='search-box'
         disableUnderline={true}
+        endAdornment={
+          currentValue ? (
+            <Clear onClick={onClear} testId='search-box-clear' />
+          ) : undefined
+        }
         placeholder={props.placeholder}
         value={currentValue}
-        onChange={onChangeValue}
+        onChange={onChangeEvent}
       />
     </div>
   );

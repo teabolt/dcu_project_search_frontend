@@ -59,7 +59,7 @@ describe('Search', function () {
   });
 
   it('should clear the search and not find any projects', function () {
-    cy.get('[data-testid="search-box"] input').clear();
+    cy.get('[data-testid="search-box-clear"]').scrollIntoView().click();
     cy.get('[data-testid="search-result-summary"]').should('not.exist');
     cy.get('[data-testid="project-0"]').should('not.exist');
   });
