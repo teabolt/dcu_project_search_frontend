@@ -95,7 +95,7 @@ const App = () => {
                 href='https://github.com/teabolt/dcu_eng_comp_projects_dataset'
                 {...commonAnchorProps}
               >
-                deployment
+                dataset
               </Anchor>
               {'.'}
             </div>
