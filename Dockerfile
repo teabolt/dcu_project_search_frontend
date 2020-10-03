@@ -13,11 +13,11 @@ RUN npm install --production
 # Copy the app source code
 COPY . ./
 
-# Build the app
-RUN npm run build
-
 # Default port we intend to expose
 EXPOSE 80
 
 # Default command to run when starting the container
-CMD ["npm", "run", "serve"]
+# We don't pre-build for the image because REACT_APP_ environment variables
+# cannot be changed after build. This approach lets us start the container without hard-coded
+# environment.
+CMD npm run build && npm run serve

@@ -11,8 +11,8 @@ env:
   global:
     - secure: L6kV3CHl0h3u+SaCJK357CGC6019zKjO7ASNHGc2VDm4Hsv+9kA4PbU+X8B6fvDg+lJ9HLrTOIIHF0oTE9i1yql4NF6g6ry0vKcHIjPz2U3EuQjElIPaUM/VRVNZUEtU5RP3daSGneb23GFJ4n7OT60/pHIrXPvszyDqJ8DCcx9/b/MuvHLR8rb8YOaa1F6+QnPCOqEFG6rHk9rWF0iIuPYnpv7gXjPkk71HkhcRX3p2IcyYAxm9oxx2R+qwbsmbppF68BNLuMS0dU6WG4J+wh86l8CWI0aQ7hO0m9CWePBYgXguBeZ7GuNS1OHNMSQ1//CUaxk2ALA5KuoO+Np9zQpfn2Xw050cQ/DAWtdJZC+2of6pE4VQCXRcGQU/2sTg+HWzDzhdg7Is6L5bnk3LNLqSus2/rxkxif89Nnj5wfgoO9nriwMOWV1OPEd8yZ0tI1QAWr8/THvUxapbVs5zQF6GNscYOVs4Y4nzsnuUBVwRUiwvEJZLM0XK5y1pwJo5H7SYz0dk9yvnKpSIAG6Bx7XO7y5IycrAg4Kc2MS998AF1x2wyiNi8UUC5op7idyhHTAzb1U9wXq+ShVG6OqmyRKrUyq9RbFn1gz0ZJs5n71DKTWiDCH2ADCZQr9JjbWWQSn4hq8hor7/dZMYpjTMPLZ3F4PVf9JPilZJ1Koych0=
     - secure: tBlubN+xWfxfLUy0OzId0VX/FJRRX1K42jh1tRU788xCSEtm9sL9Cst4uaKV+xcnwgdhB+cB8VljhrrAy7L0B2nSsIZbXnm7ltW/gpeyibK7E5Ap4xTGxoAG+CgVXdRN415LGdmv5RAtc+Pufnth/C+OO61TYv1Di/cjBEztGHCOLcU/y8bHa22OZYcbVuR4Ji4ESQdOzZy2N0GjfBIE0ZC0wP7pW0iPRyWmDhF+3khyT0WbjNjX8SoJQOBBLGGTBFLG0/TITfiryigOksrG3mONTNqddJHqadhbqyzZ45xgp4gZq2C436SS8YxQD/lc/L3R2SsU+wXQ3q9xC1ReXS7lxduiPVUDE9MGgnukCL6nQB/DBYDVY/fUHNvrkOTSLUcIQXoe5ch6Xi2Q7JTAJPsh0bfZFnkCXnVQXOCwqEzZANFa8207ul2gDunuq5MpbEQyiJzYFUwbbpbuR938bEAodNfP9Xfh7sqr+Y2MkfdFusXKoWms80VwHBSgnzMytk3ZJV1cq9ZrrsH2QscjUY/Z11WIE4UnyDMe/PTpez6oU/QpcBAK5q9N5Rgk3XoweWuM94ldbuijSGyHaajvk9WRsMNe+6ZjqQDk/gVTfhIChqRuNjQatpB0gRk2IulTZ96vmD0Ce+a0dvQ+lhthVSt29lPCzcDI2K626m4ekxw=
-    # Environment variables for docker production build (these cannot be changed afterwards)
-    - REACT_APP_BACKEND_HOST=https://prosearch.tomasb.ie:8080
+    # Test with development mode
+    - NODE_ENV=development
 
 addons:
   apt:
@@ -41,9 +41,12 @@ script: npm run prettify-check &&
   npm run stylelint &&
   npm run lint &&
   npm run test &&
-  npx start-server-and-test start http://localhost:3000 test-e2e
+  # build and check that no errors are produced
+  npm run build &&
+  # run e2e tests against production server in development mode
+  npx start-server-and-test serve http://localhost:3000 test-e2e
 
 after_success:
-  - docker build --build-arg REACT_APP_BACKEND_HOST -t tomasbalt/dcu_project_search_frontend:latest .
+  - docker build -t tomasbalt/dcu_project_search_frontend:latest .
   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
   - docker push tomasbalt/dcu_project_search_frontend
