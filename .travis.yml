@@ -37,13 +37,14 @@ cache:
 install:
   - npm ci
 
+# Run through pipeline of checks.
+# Then build and check that no errors are produced
+# and test with the production server in development mode.
 script: npm run prettify-check &&
   npm run stylelint &&
   npm run lint &&
   npm run test &&
-  # build and check that no errors are produced
   npm run build &&
-  # run e2e tests against production server in development mode
   npx start-server-and-test serve http://localhost:3000 test-e2e
 
 after_success:
