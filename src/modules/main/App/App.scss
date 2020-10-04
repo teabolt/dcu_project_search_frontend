@@ -13,8 +13,16 @@
       margin-bottom: 6em;
     }
 
+    .nav-breadcrumbs {
+      margin-bottom: 1em;
+    }
+
     .app-content {
       margin-bottom: 6em;
+
+      .app-header {
+        margin-bottom: 6em;
+      }
     }
   }
 }

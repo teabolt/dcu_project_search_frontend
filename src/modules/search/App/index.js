@@ -10,10 +10,14 @@ import LoadingSpinner from 'prosearch-components/LoadingSpinner';
 import SearchBox from 'prosearch-components/SearchBox';
 import SearchResultSummary from 'prosearch-components/SearchResultSummary';
 import withQueryParam from 'prosearch-components/withQueryParam';
-import { SEARCH_DEFAULT_PAGINATION_SIZE } from 'prosearch-constants';
+import {
+  SEARCH_DEFAULT_PAGINATION_SIZE,
+  SNACKBAR_DEFAULT_ERROR_DURATION_MS,
+  SNACKBAR_DEFAULT_ERROR_ORIGIN,
+} from 'prosearch-constants';
 import SearchResults from 'prosearch-views/SearchResults';
 
-import SearchHeader from 'modules/search/components/SearchHeader';
+import Header from './Header';
 
 import { DEBOUNCE_WAIT_MS, PLACEHOLDER_MSG } from './constants';
 import { isValidQuery, validateResults } from './utils';
@@ -56,7 +60,7 @@ const App = (props) => {
 
   return (
     <AppLayout appClass={classNames('search-app', 'home-app')} appName='Search'>
-      <SearchHeader />
+      <Header />
       <SearchBox
         placeholder={PLACEHOLDER_MSG}
         value={props.query}
@@ -82,11 +86,8 @@ const App = (props) => {
         </>
       )}
       <Snackbar
-        anchorOrigin={{
-          horizontal: 'right',
-          vertical: 'bottom',
-        }}
-        autoHideDuration={6000}
+        anchorOrigin={SNACKBAR_DEFAULT_ERROR_ORIGIN}
+        autoHideDuration={SNACKBAR_DEFAULT_ERROR_DURATION_MS}
         message={error}
         open={Boolean(error)}
         onClose={onSnackbarClose}

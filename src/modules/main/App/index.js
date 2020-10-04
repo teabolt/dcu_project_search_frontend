@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AboutApp from 'modules/about';
+import ProjectsApp from 'modules/projects';
 import SearchApp from 'modules/search';
 
 import Footer from 'prosearch-components/Footer';
@@ -23,6 +24,9 @@ function App() {
           <Switch>
             <Route path='/about'>
               <AboutApp />
+            </Route>
+            <Route path='/projects/:project'>
+              <ProjectsApp />
             </Route>
             <Route path='/'>
               <SearchApp />

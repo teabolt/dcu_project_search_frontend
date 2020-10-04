@@ -2,7 +2,7 @@
 @import '~prosearch-stylesheets/Fonts';
 @import '~prosearch-stylesheets/Flex';
 
-.project-container.MuiAccordion-root.MuiAccordion-rounded {
+@mixin card-style {
   @include flex(column, nowrap);
 
   background-color: $gray3;
@@ -11,57 +11,67 @@
   color: $black;
   padding: 2em 2em 1em 2em;
   text-align: start;
+}
 
-  // Need this to get rid of an unexpected line at the top of the accordion container
-  &::before {
-    content: none;
-  }
+.project-container {
+  &.MuiAccordion-root.MuiAccordion-rounded {
+    @include card-style;
 
-  .project-summary {
-    .project-header {
+    // Need this to get rid of an unexpected line at the top of the accordion container
+    &::before {
+      content: none;
+    }
+
+    .project-summary {
+      .project-header {
+        @include flex(row, nowrap);
+
+        justify-content: space-between;
+        margin-bottom: 2em;
+
+        .project-title {
+          @include bold-font;
+
+          width: 90%;
+        }
+
+        .project-year {
+          color: $gray1;
+        }
+      }
+
+      // Override accordion summary being unselectable and having pointer cursor.
+      &.MuiButtonBase-root {
+        cursor: auto;
+        user-select: text;
+      }
+
+      .MuiAccordionSummary-content {
+        @include flex(column, nowrap);
+      }
+    }
+
+    .project-expanded-container {
+      @include flex(column, nowrap);
+    }
+
+    .project-controls {
       @include flex(row, nowrap);
 
       justify-content: space-between;
-      margin-bottom: 2em;
+      margin-top: 1.5em;
 
-      .project-title {
-        @include bold-font;
-
-        width: 90%;
+      .project-control {
+        color: $purple1;
+        cursor: pointer;
       }
-
-      .project-year {
-        color: $gray1;
-      }
-    }
-
-    // Override accordion summary being unselectable and having pointer cursor.
-    &.MuiButtonBase-root {
-      cursor: auto;
-      user-select: text;
-    }
-
-    .MuiAccordionSummary-content {
-      @include flex(column, nowrap);
     }
   }
 
-  .project-expanded-container {
-    @include flex(column, nowrap);
-  }
+  &.project-container-flat {
+    @include card-style;
 
-  .project-expand-control {
-    color: $purple1;
-    cursor: pointer;
-    margin-top: 1.2em;
-
-    &.project-expand-control-more {
-      align-self: flex-end;
-    }
-
-    &.project-expand-control-less {
-      align-self: flex-end;
-    }
+    padding-bottom: 3em;
   }
 
   .list-item {

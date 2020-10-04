@@ -52,6 +52,7 @@ const SearchResults = (props) => {
               <Grid item className='search-results-grid-item'>
                 <Project
                   key={`project-${index}`}
+                  enableAccordions={true}
                   project={result}
                   testId={`project-${index}`}
                 />

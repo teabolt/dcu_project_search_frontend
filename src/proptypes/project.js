@@ -8,6 +8,7 @@ export const ProjectStudents = PropTypes.arrayOf(
 );
 
 export const Project = PropTypes.exact({
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
 
