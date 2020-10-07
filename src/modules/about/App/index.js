@@ -7,10 +7,12 @@ import Header from './Header';
 
 import './App.scss';
 
+const appClass = 'about-app';
+
 const App = () => {
   return (
-    <AppLayout appClass='about-app' appName='About' showBreadcrumbs={true}>
-      <Header />
+    <AppLayout appClass={appClass} appName='About' showBreadcrumbs={true}>
+      <Header className={appClass} />
       <Card />
     </AppLayout>
   );

@@ -24,6 +24,8 @@ import { isValidQuery, validateResults } from './utils';
 
 import './App.scss';
 
+const appClass = 'search-app';
+
 const App = (props) => {
   const [searchResults, setSearchResults] = useState(null);
   const [error, setError] = useState(null);
@@ -59,8 +61,8 @@ const App = (props) => {
   };
 
   return (
-    <AppLayout appClass={classNames('search-app', 'home-app')} appName='Search'>
-      <Header />
+    <AppLayout appClass={classNames(appClass, 'home-app')} appName='Search'>
+      <Header className={appClass} />
       <SearchBox
         placeholder={PLACEHOLDER_MSG}
         value={props.query}

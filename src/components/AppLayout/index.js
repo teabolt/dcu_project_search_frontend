@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Grid from '@material-ui/core/Grid';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import Navbar from 'modules/main/components/Navbar';
 import NavBreadcrumbs from 'prosearch-components/NavBreadcrumbs';

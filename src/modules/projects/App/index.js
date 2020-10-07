@@ -18,6 +18,8 @@ import Header from './Header';
 
 import './App.scss';
 
+const appClass = 'projects-app';
+
 const App = () => {
   const [project, setProject] = useState(null);
   const [error, setError] = useState('');
@@ -58,17 +60,13 @@ const App = () => {
   } else {
     content = (
       <>
-        <Header project={project} />
+        <Header className={appClass} project={project} />
         <Card project={project} />
       </>
     );
   }
   return (
-    <AppLayout
-      appClass='projects-app'
-      appName='Projects'
-      showBreadcrumbs={true}
-    >
+    <AppLayout appClass={appClass} appName='Projects' showBreadcrumbs={true}>
       {content}
       <Snackbar
         anchorOrigin={SNACKBAR_DEFAULT_ERROR_ORIGIN}

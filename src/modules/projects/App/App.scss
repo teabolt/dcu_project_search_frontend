@@ -3,10 +3,7 @@
 
 .projects-app {
   .app-content {
-    @include flex(column, nowrap);
-
     .project-spinner {
-      align-self: center;
       color: $white;
       width: 50%;
       margin-top: 6em;
