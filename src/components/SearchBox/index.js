@@ -1,5 +1,5 @@
 import Input from '@material-ui/core/Input';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Clear from './Clear';
@@ -8,6 +8,10 @@ import './SearchBox.scss';
 
 const SearchBox = (props) => {
   const [currentValue, setCurrentValue] = useState(props.value);
+
+  useEffect(() => {
+    setCurrentValue(props.value);
+  }, [props]);
 
   const onUpdate = (value) => {
     // Keep track of current value in real time internally

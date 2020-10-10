@@ -59,6 +59,19 @@ describe('Search', function () {
     cy.verifyProjectHeader();
   });
 
+  it('should get expected results from clicking back and forward buttons', function () {
+    // Get the initial state
+    cy.go('back');
+    cy.get('[data-testid="search-box"] input').should('have.attr', 'value', '');
+    // Get the query state
+    cy.go('forward');
+    cy.get('[data-testid="search-box"] input').should(
+      'have.attr',
+      'value',
+      TEST_QUERY
+    );
+  });
+
   it('should clear the search and not find any projects', function () {
     cy.get('[data-testid="search-box-clear"]').scrollIntoView().click();
     cy.get('[data-testid="search-result-summary"]').should('not.exist');
