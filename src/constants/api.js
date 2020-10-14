@@ -1,7 +1,9 @@
+import { getEnv } from 'prosearch-utils';
+
 export const API_ENDPOINT = 'api/v1';
 
 export const BACKEND_HOST =
-  process.env.REACT_APP_BACKEND_HOST || 'http://localhost:3001';
+  getEnv('REACT_APP_BACKEND_HOST') || 'http://localhost:3001';
 
 export const BACKEND_URL = `${BACKEND_HOST}/${API_ENDPOINT}`;
 

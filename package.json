@@ -25,6 +25,7 @@
     "css-loader": "3.4.2",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
+    "ejs": "^3.1.5",
     "eslint": "^6.6.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "3.0.3",
@@ -80,6 +81,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "serve": "node server.js",
+    "serve:dev": "nodemon server.js",
     "lint": "bash scripts/lint.sh",
     "stylelint": "bash scripts/stylelint.sh",
     "stylelint-fix": "bash scripts/stylelint.sh --fix",
@@ -172,6 +174,7 @@
   "devDependencies": {
     "cypress": "^4.12.1",
     "eslint-plugin-cypress": "^2.11.1",
+    "nodemon": "^2.0.5",
     "prettier": "^2.0.5",
     "start-server-and-test": "^1.11.3",
     "stylelint": "^13.7.2",
